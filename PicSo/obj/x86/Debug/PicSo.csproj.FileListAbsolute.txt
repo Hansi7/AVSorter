@@ -1,0 +1,64 @@
+C:\Users\ShenJian281\documents\visual studio 2010\Projects\PICSOUL\PicSo\bin\Debug\PicSo.exe
+C:\Users\ShenJian281\documents\visual studio 2010\Projects\PICSOUL\PicSo\bin\Debug\PicSo.pdb
+C:\Users\ShenJian281\documents\visual studio 2010\Projects\PICSOUL\PicSo\bin\Debug\Arzon.dll
+C:\Users\ShenJian281\documents\visual studio 2010\Projects\PICSOUL\PicSo\bin\Debug\Entity.dll
+C:\Users\ShenJian281\documents\visual studio 2010\Projects\PICSOUL\PicSo\bin\Debug\HtmlAgilityPack.dll
+C:\Users\ShenJian281\documents\visual studio 2010\Projects\PICSOUL\PicSo\bin\Debug\Arzon.pdb
+C:\Users\ShenJian281\documents\visual studio 2010\Projects\PICSOUL\PicSo\bin\Debug\Entity.pdb
+C:\Users\ShenJian281\documents\visual studio 2010\Projects\PICSOUL\PicSo\obj\x86\Debug\PicSo.csprojResolveAssemblyReference.cache
+C:\Users\ShenJian281\documents\visual studio 2010\Projects\PICSOUL\PicSo\obj\x86\Debug\PICSOUL.BasicContainer.resources
+C:\Users\ShenJian281\documents\visual studio 2010\Projects\PICSOUL\PicSo\obj\x86\Debug\PicSo.Form1.resources
+C:\Users\ShenJian281\documents\visual studio 2010\Projects\PICSOUL\PicSo\obj\x86\Debug\PicSo.Properties.Resources.resources
+C:\Users\ShenJian281\documents\visual studio 2010\Projects\PICSOUL\PicSo\obj\x86\Debug\PicSo.csproj.GenerateResource.Cache
+C:\Users\ShenJian281\documents\visual studio 2010\Projects\PICSOUL\PicSo\obj\x86\Debug\PicSo.exe
+C:\Users\ShenJian281\documents\visual studio 2010\Projects\PICSOUL\PicSo\obj\x86\Debug\PicSo.pdb
+C:\Users\ShenJian281\Documents\Visual Studio 2010\Projects\PICSOUL\PicSo\bin\Debug\PicSo.exe.config
+C:\Users\su\Desktop\PICSOUL\PicSo\bin\Debug\PicSo.exe.config
+C:\Users\su\Desktop\PICSOUL\PicSo\obj\x86\Debug\PicSo.exe
+C:\Users\su\Desktop\PICSOUL\PicSo\obj\x86\Debug\PicSo.pdb
+C:\Users\su\Desktop\PICSOUL\PicSo\bin\Debug\PicSo.exe
+C:\Users\su\Desktop\PICSOUL\PicSo\bin\Debug\PicSo.pdb
+C:\Users\su\Desktop\PICSOUL\PicSo\bin\Debug\Arzon.dll
+C:\Users\su\Desktop\PICSOUL\PicSo\bin\Debug\Entity.dll
+C:\Users\su\Desktop\PICSOUL\PicSo\bin\Debug\HtmlAgilityPack.dll
+C:\Users\su\Desktop\PICSOUL\PicSo\bin\Debug\Arzon.pdb
+C:\Users\su\Desktop\PICSOUL\PicSo\bin\Debug\Entity.pdb
+C:\Users\su\Desktop\PICSOUL\PicSo\obj\x86\Debug\PicSo.csprojResolveAssemblyReference.cache
+C:\Users\su\Desktop\PICSOUL\PicSo\obj\x86\Debug\PICSOUL.BasicContainer.resources
+C:\Users\su\Desktop\PICSOUL\PicSo\obj\x86\Debug\PicSo.Form1.resources
+C:\Users\su\Desktop\PICSOUL\PicSo\obj\x86\Debug\PicSo.Properties.Resources.resources
+C:\Users\su\Desktop\PICSOUL\PicSo\obj\x86\Debug\PicSo.csproj.GenerateResource.Cache
+C:\Users\su\Desktop\PICSOUL\PicSo\obj\x86\Debug\PicSo.InputBox.resources
+C:\Users\ShenJian281\Desktop\PICSOUL2014年8月20日\PICSOUL\PicSo\bin\Debug\PicSo.exe.config
+C:\Users\ShenJian281\Desktop\PICSOUL2014年8月20日\PICSOUL\PicSo\obj\x86\Debug\PicSo.exe
+C:\Users\ShenJian281\Desktop\PICSOUL2014年8月20日\PICSOUL\PicSo\obj\x86\Debug\PicSo.pdb
+C:\Users\ShenJian281\Desktop\PICSOUL2014年8月20日\PICSOUL\PicSo\bin\Debug\PicSo.exe
+C:\Users\ShenJian281\Desktop\PICSOUL2014年8月20日\PICSOUL\PicSo\bin\Debug\PicSo.pdb
+C:\Users\ShenJian281\Desktop\PICSOUL2014年8月20日\PICSOUL\PicSo\bin\Debug\Entity.dll
+C:\Users\ShenJian281\Desktop\PICSOUL2014年8月20日\PICSOUL\PicSo\bin\Debug\HtmlAgilityPack.dll
+C:\Users\ShenJian281\Desktop\PICSOUL2014年8月20日\PICSOUL\PicSo\bin\Debug\Entity.pdb
+C:\Users\ShenJian281\Desktop\PICSOUL2014年8月20日\PICSOUL\PicSo\obj\x86\Debug\PicSo.csprojResolveAssemblyReference.cache
+C:\Users\ShenJian281\Desktop\PICSOUL2014年8月20日\PICSOUL\PicSo\obj\x86\Debug\PICSOUL.BasicContainer.resources
+C:\Users\ShenJian281\Desktop\PICSOUL2014年8月20日\PICSOUL\PicSo\obj\x86\Debug\PicSo.Form1.resources
+C:\Users\ShenJian281\Desktop\PICSOUL2014年8月20日\PICSOUL\PicSo\obj\x86\Debug\PicSo.InputBox.resources
+C:\Users\ShenJian281\Desktop\PICSOUL2014年8月20日\PICSOUL\PicSo\obj\x86\Debug\PicSo.Properties.Resources.resources
+C:\Users\ShenJian281\Desktop\PICSOUL2014年8月20日\PICSOUL\PicSo\obj\x86\Debug\PicSo.csproj.GenerateResource.Cache
+C:\Users\ShenJian281\Desktop\PICSOUL2014年8月20日\PICSOUL\PicSo\bin\Debug\Gets.dll
+C:\Users\ShenJian281\Desktop\PICSOUL2014年8月20日\PICSOUL\PicSo\bin\Debug\Gets.pdb
+C:\Users\su\Desktop\PICSOUL2014年8月20日\PICSOUL2014年8月20日\PICSOUL\PicSo\bin\Debug\PicSo.exe.config
+C:\Users\su\Desktop\PICSOUL2014年8月20日\PICSOUL2014年8月20日\PICSOUL\PicSo\obj\x86\Debug\PicSo.exe
+C:\Users\su\Desktop\PICSOUL2014年8月20日\PICSOUL2014年8月20日\PICSOUL\PicSo\obj\x86\Debug\PicSo.pdb
+C:\Users\su\Desktop\PICSOUL2014年8月20日\PICSOUL2014年8月20日\PICSOUL\PicSo\bin\Debug\PicSo.exe
+C:\Users\su\Desktop\PICSOUL2014年8月20日\PICSOUL2014年8月20日\PICSOUL\PicSo\bin\Debug\PicSo.pdb
+C:\Users\su\Desktop\PICSOUL2014年8月20日\PICSOUL2014年8月20日\PICSOUL\PicSo\bin\Debug\Entity.dll
+C:\Users\su\Desktop\PICSOUL2014年8月20日\PICSOUL2014年8月20日\PICSOUL\PicSo\bin\Debug\Gets.dll
+C:\Users\su\Desktop\PICSOUL2014年8月20日\PICSOUL2014年8月20日\PICSOUL\PicSo\bin\Debug\HtmlAgilityPack.dll
+C:\Users\su\Desktop\PICSOUL2014年8月20日\PICSOUL2014年8月20日\PICSOUL\PicSo\bin\Debug\Gets.pdb
+C:\Users\su\Desktop\PICSOUL2014年8月20日\PICSOUL2014年8月20日\PICSOUL\PicSo\bin\Debug\Entity.pdb
+C:\Users\su\Desktop\PICSOUL2014年8月20日\PICSOUL2014年8月20日\PICSOUL\PicSo\obj\x86\Debug\PicSo.csprojResolveAssemblyReference.cache
+C:\Users\su\Desktop\PICSOUL2014年8月20日\PICSOUL2014年8月20日\PICSOUL\PicSo\obj\x86\Debug\PicSo.Form1.resources
+C:\Users\su\Desktop\PICSOUL2014年8月20日\PICSOUL2014年8月20日\PICSOUL\PicSo\obj\x86\Debug\PicSo.InputBox.resources
+C:\Users\su\Desktop\PICSOUL2014年8月20日\PICSOUL2014年8月20日\PICSOUL\PicSo\obj\x86\Debug\PicSo.Properties.Resources.resources
+C:\Users\su\Desktop\PICSOUL2014年8月20日\PICSOUL2014年8月20日\PICSOUL\PicSo\obj\x86\Debug\PicSo.csproj.GenerateResource.Cache
+C:\Users\su\Desktop\PICSOUL2014年8月20日\PICSOUL2014年8月20日\PICSOUL\PicSo\obj\x86\Debug\AVSORTER.BasicContainer.resources
+C:\Users\su\Desktop\PICSOUL2014年8月20日\PICSOUL2014年8月20日\PICSOUL\PicSo\obj\x86\Debug\PicSo.MovieContainer.resources

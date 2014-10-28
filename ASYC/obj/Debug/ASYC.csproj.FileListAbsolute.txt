@@ -1,0 +1,13 @@
+C:\Users\su\Desktop\PICSOUL2014年8月20日\PICSOUL2014年8月20日\PICSOUL\ASYC\bin\Debug\ASYC.exe
+C:\Users\su\Desktop\PICSOUL2014年8月20日\PICSOUL2014年8月20日\PICSOUL\ASYC\bin\Debug\ASYC.pdb
+C:\Users\su\Desktop\PICSOUL2014年8月20日\PICSOUL2014年8月20日\PICSOUL\ASYC\obj\Debug\ASYC.Properties.Resources.resources
+C:\Users\su\Desktop\PICSOUL2014年8月20日\PICSOUL2014年8月20日\PICSOUL\ASYC\obj\Debug\ASYC.csproj.GenerateResource.Cache
+C:\Users\su\Desktop\PICSOUL2014年8月20日\PICSOUL2014年8月20日\PICSOUL\ASYC\obj\Debug\ASYC.exe
+C:\Users\su\Desktop\PICSOUL2014年8月20日\PICSOUL2014年8月20日\PICSOUL\ASYC\obj\Debug\ASYC.pdb
+C:\Users\su\Desktop\PICSOUL2014年8月20日\PICSOUL2014年8月20日\PICSOUL\ASYC\obj\Debug\ASYC.csprojResolveAssemblyReference.cache
+C:\Users\su\Desktop\PICSOUL2014年8月20日\PICSOUL2014年8月20日\PICSOUL\ASYC\obj\Debug\ASYC.Form1.resources
+C:\Users\su\Desktop\PICSOUL2014年8月20日\PICSOUL2014年8月20日\PICSOUL\ASYC\bin\Debug\Gets.dll
+C:\Users\su\Desktop\PICSOUL2014年8月20日\PICSOUL2014年8月20日\PICSOUL\ASYC\bin\Debug\Entity.dll
+C:\Users\su\Desktop\PICSOUL2014年8月20日\PICSOUL2014年8月20日\PICSOUL\ASYC\bin\Debug\HtmlAgilityPack.dll
+C:\Users\su\Desktop\PICSOUL2014年8月20日\PICSOUL2014年8月20日\PICSOUL\ASYC\bin\Debug\Gets.pdb
+C:\Users\su\Desktop\PICSOUL2014年8月20日\PICSOUL2014年8月20日\PICSOUL\ASYC\bin\Debug\Entity.pdb

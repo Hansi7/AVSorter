@@ -168,12 +168,20 @@ namespace Gets
                 string Title = docc.DocumentNode.SelectSingleNode("//div[@id='detail_new']/div[@class='detail_title']/h1").InnerText.Trim();
                 Title = Tools.RemoveInvalidChars(Title);
 
+                while (Title.IndexOf("&nbsp;") != -1)
+                {
+                  Title=  Title.Replace("&nbsp;", "");
+                }
+                while (Title.IndexOf("廃盤") != -1)
+                {
+                    Title = Title.Replace("廃盤", "");
+                }
                 //var ddd ="[MIDD-983]Ｂａｂｙ　Ｅｎｔｅｒｔａｉｎｍｅｎｔ×ＭＯＯＤＹＺコラボ作品　淫神の女泥棒　哀しき痙攣の追憶　Ｄｅａｒ．Ｆ　１　恥辱的、屈辱的なイカせの拷問！　反反复复反反复复方法";
                 if (Title.Length>82)
                 {
                     Title = Title.Substring(0, 81);
                 }
-                
+
 
 
                 //string Title = basic.Title;
@@ -196,6 +204,16 @@ namespace Gets
                 
                 string minutes = docc.DocumentNode.SelectSingleNode("//div[@id='detail_new']/table/tr/td/table[@class='item_detail']/tr/td[@class='caption']/table[@class='item']/tr[7]/td[2]").InnerText.Trim();
                 string f_code = docc.DocumentNode.SelectSingleNode("//div[@id='detail_new']/table/tr/td/table[@class='item_detail']/tr/td[@class='caption']/table[@class='item']/tr[8]/td[2]").InnerText.Trim();
+
+                while (f_code.IndexOf("&nbsp;")!=-1)
+                {
+                    f_code = f_code.Replace("&nbsp;", "");
+                }
+                while (f_code.IndexOf("廃盤")!=-1)
+                {
+                    f_code = f_code.Replace("廃盤", "");
+                }
+
                 f_code = Tools.Fcode(f_code);
                 string xilie = docc.DocumentNode.SelectSingleNode("//div[@id='detail_new']/table/tr/td/table[@class='item_detail']/tr/td[@class='caption']/table[@class='item']/tr[4]/td[2]").InnerText.Trim();
                 //f_code = Tools.Fcode(f_code);

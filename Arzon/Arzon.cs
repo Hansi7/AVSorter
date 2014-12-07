@@ -158,6 +158,101 @@ namespace Gets
             //}
 
         }
+
+        /// <summary>
+        /// this is the old version.
+        /// </summary>
+        /// <param name="basic"></param>
+        /// <returns></returns>
+        //public Movie GetMovie(MovieBasic basic)
+        //{
+        //    try
+        //    {
+        //        string html = wc.GetHTML(new Uri(basic.ItemURL));
+        //        var docc = new HtmlDocument();
+        //        docc.LoadHtml(html);
+        //        //web DOM Changed 2014/12/7
+        //        string Title = docc.DocumentNode.SelectSingleNode("//div[@id='detail_new']/div[@class='detail_title']/h1").InnerText.Trim();
+        //        //string Title = docc.DocumentNode.SelectSingleNode("//div[@id='detail_new']/div[@class='detail_title_new']/h1").InnerHtml;
+                
+                
+        //        Title = Tools.RemoveInvalidChars(Title);
+
+        //        while (Title.IndexOf("&nbsp;") != -1)
+        //        {
+        //          Title=  Title.Replace("&nbsp;", "");
+        //        }
+        //        while (Title.IndexOf("廃盤") != -1)
+        //        {
+        //            Title = Title.Replace("廃盤", "");
+        //        }
+        //        //var ddd ="[MIDD-983]Ｂａｂｙ　Ｅｎｔｅｒｔａｉｎｍｅｎｔ×ＭＯＯＤＹＺコラボ作品　淫神の女泥棒　哀しき痙攣の追憶　Ｄｅａｒ．Ｆ　１　恥辱的、屈辱的なイカせの拷問！　反反复复反反复复方法";
+        //        if (Title.Length>82)
+        //        {
+        //            Title = Title.Substring(0, 81);
+        //        }
+
+
+
+        //        //string Title = basic.Title;
+        //        string label = docc.DocumentNode.SelectSingleNode("//div[@id='detail_new']/table/tr/td/table[@class='item_detail']/tr/td[@class='caption']/table[@class='item']/tr[3]/td/a").InnerText.Trim();
+        //        string changjia = docc.DocumentNode.SelectSingleNode("//div[@id='detail_new']/table/tr/td/table[@class='item_detail']/tr/td[@class='caption']/table[@class='item']/tr[2]/td/a").InnerText.Trim();
+        //        string jiandu = docc.DocumentNode.SelectSingleNode("//div[@id='detail_new']/table/tr/td/table[@class='item_detail']/tr/td[@class='caption']/table[@class='item']/tr[5]/td[2]").InnerText.Trim();
+        //        string date = docc.DocumentNode.SelectSingleNode("//div[@id='detail_new']/table/tr/td/table[@class='item_detail']/tr/td[@class='caption']/table[@class='item']/tr[6]/td[2]").InnerText.Trim();
+        //        //2008/01/25 (DVD レンタル版)
+        //        System.Text.RegularExpressions.Regex r = new System.Text.RegularExpressions.Regex(@"\d{4}/\d{2}/\d{2}");
+        //        if (r.IsMatch(date))
+        //        {
+        //            date = r.Match(date).Value;
+        //        }
+        //        else
+        //        {
+        //            date = "1900/01/01";
+        //        }
+        //        DateTime dtime = DateTime.Parse(date);
+                
+                
+        //        string minutes = docc.DocumentNode.SelectSingleNode("//div[@id='detail_new']/table/tr/td/table[@class='item_detail']/tr/td[@class='caption']/table[@class='item']/tr[7]/td[2]").InnerText.Trim();
+        //        string f_code = docc.DocumentNode.SelectSingleNode("//div[@id='detail_new']/table/tr/td/table[@class='item_detail']/tr/td[@class='caption']/table[@class='item']/tr[8]/td[2]").InnerText.Trim();
+
+        //        while (f_code.IndexOf("&nbsp;")!=-1)
+        //        {
+        //            f_code = f_code.Replace("&nbsp;", "");
+        //        }
+        //        while (f_code.IndexOf("廃盤")!=-1)
+        //        {
+        //            f_code = f_code.Replace("廃盤", "");
+        //        }
+
+        //        f_code = Tools.Fcode(f_code);
+        //        string xilie = docc.DocumentNode.SelectSingleNode("//div[@id='detail_new']/table/tr/td/table[@class='item_detail']/tr/td[@class='caption']/table[@class='item']/tr[4]/td[2]").InnerText.Trim();
+        //        //f_code = Tools.Fcode(f_code);
+        //        string intro = docc.DocumentNode.SelectSingleNode("//table[@class='item_detail']/tr/td[@class='text']").InnerText.Trim();
+        //        string coverImg = docc.DocumentNode.SelectSingleNode("//table[@class='item_detail']/tr/td/div/a").Attributes["href"].Value.Trim();
+        //        Movie m = new Movie()
+        //        {
+        //            Actor = basic.Actor,
+        //            Title = Title,
+        //            Lable = label,
+        //            Maker = changjia,
+        //            ReleaseDate = dtime,
+        //            Minutes = minutes,
+        //            AVCode = f_code,
+        //            Introduction = intro,
+        //            CoverURL = coverImg,
+        //            ItemURL = basic.ItemURL,
+        //            Series = xilie,
+        //            Producer = jiandu
+        //        };
+        //        //Console.WriteLine(string.Format("Actor:{0}\r\nTitle:{1}\r\nLabel:{2}\r\nMaker:{3}\r\nReleaseDate:{4}\r\n番号:{5}\r\n ", m.Actor[0], m.Title, m.Lable, m.Maker, m.ReleaseDate.ToShortDateString(), m.AVCode));
+        //        return m;
+        //    }
+        //    catch (Exception)
+        //    {
+        //        throw  new Exception("获取影片信息失败！");
+        //    }
+        //}
+
         public Movie GetMovie(MovieBasic basic)
         {
             try
@@ -165,83 +260,108 @@ namespace Gets
                 string html = wc.GetHTML(new Uri(basic.ItemURL));
                 var docc = new HtmlDocument();
                 docc.LoadHtml(html);
-                string Title = docc.DocumentNode.SelectSingleNode("//div[@id='detail_new']/div[@class='detail_title']/h1").InnerText.Trim();
-                Title = Tools.RemoveInvalidChars(Title);
-
-                while (Title.IndexOf("&nbsp;") != -1)
-                {
-                  Title=  Title.Replace("&nbsp;", "");
-                }
-                while (Title.IndexOf("廃盤") != -1)
-                {
-                    Title = Title.Replace("廃盤", "");
-                }
-                //var ddd ="[MIDD-983]Ｂａｂｙ　Ｅｎｔｅｒｔａｉｎｍｅｎｔ×ＭＯＯＤＹＺコラボ作品　淫神の女泥棒　哀しき痙攣の追憶　Ｄｅａｒ．Ｆ　１　恥辱的、屈辱的なイカせの拷問！　反反复复反反复复方法";
-                if (Title.Length>82)
-                {
-                    Title = Title.Substring(0, 81);
-                }
+                //web DOM Changed 2014/12/7
+                string Title = docc.DocumentNode.SelectSingleNode("//div[@id='detail_new']/div[@class='detail_title_new']/h1").InnerText.Trim();
+                string coverImg = docc.DocumentNode.SelectSingleNode("//*[@id='detail_new']/table/tr/td[1]/table/tr[1]/td[1]/div/a[1]").Attributes["href"].Value.ToString().Trim();
 
 
+                //AV女優：
+                var item1 = docc.DocumentNode.SelectSingleNode("//table[@class='item']/tr[1]/td[2]").InnerText.Trim();
+                //AVメーカー    制造厂
+                var item2 = docc.DocumentNode.SelectSingleNode("//table[@class='item']/tr[2]/td[2]").InnerText.Trim();
+                //AVレーベル    唱片公司
+                var item3 = docc.DocumentNode.SelectSingleNode("//table[@class='item']/tr[3]/td[2]").InnerText.Trim();
+                //シリーズ      系列
+                var item4 = docc.DocumentNode.SelectSingleNode("//table[@class='item']/tr[4]/td[2]").InnerText.Trim();
+                //監督          导演
+                var item5 = docc.DocumentNode.SelectSingleNode("//table[@class='item']/tr[5]/td[2]").InnerText.Trim();
+                //発売日：
+                var item6 = docc.DocumentNode.SelectSingleNode("//table[@class='item']/tr[6]/td[2]").InnerText.Trim();
+                //収録時間
+                var item7 = docc.DocumentNode.SelectSingleNode("//table[@class='item']/tr[7]/td[2]").InnerText.Trim();
+                //品番
+                var item8 = docc.DocumentNode.SelectSingleNode("//table[@class='item']/tr[8]/td[2]").InnerText.Trim();
+                //タグ：       标签
+                var item9 = docc.DocumentNode.SelectSingleNode("//table[@class='item']/tr[9]/td[2]").InnerText.Trim();
+                //作品紹介
+                var descrition = docc.DocumentNode.SelectSingleNode("//div[@class='item_text']").InnerText.Trim();
 
-                //string Title = basic.Title;
-                string label = docc.DocumentNode.SelectSingleNode("//div[@id='detail_new']/table/tr/td/table[@class='item_detail']/tr/td[@class='caption']/table[@class='item']/tr[3]/td/a").InnerText.Trim();
-                string changjia = docc.DocumentNode.SelectSingleNode("//div[@id='detail_new']/table/tr/td/table[@class='item_detail']/tr/td[@class='caption']/table[@class='item']/tr[2]/td/a").InnerText.Trim();
-                string jiandu = docc.DocumentNode.SelectSingleNode("//div[@id='detail_new']/table/tr/td/table[@class='item_detail']/tr/td[@class='caption']/table[@class='item']/tr[5]/td[2]").InnerText.Trim();
-                string date = docc.DocumentNode.SelectSingleNode("//div[@id='detail_new']/table/tr/td/table[@class='item_detail']/tr/td[@class='caption']/table[@class='item']/tr[6]/td[2]").InnerText.Trim();
-                //2008/01/25 (DVD レンタル版)
-                System.Text.RegularExpressions.Regex r = new System.Text.RegularExpressions.Regex(@"\d{4}/\d{2}/\d{2}");
-                if (r.IsMatch(date))
-                {
-                    date = r.Match(date).Value;
-                }
-                else
-                {
-                    date = "1900/01/01";
-                }
-                DateTime dtime = DateTime.Parse(date);
-                
-                
-                string minutes = docc.DocumentNode.SelectSingleNode("//div[@id='detail_new']/table/tr/td/table[@class='item_detail']/tr/td[@class='caption']/table[@class='item']/tr[7]/td[2]").InnerText.Trim();
-                string f_code = docc.DocumentNode.SelectSingleNode("//div[@id='detail_new']/table/tr/td/table[@class='item_detail']/tr/td[@class='caption']/table[@class='item']/tr[8]/td[2]").InnerText.Trim();
 
-                while (f_code.IndexOf("&nbsp;")!=-1)
-                {
-                    f_code = f_code.Replace("&nbsp;", "");
-                }
-                while (f_code.IndexOf("廃盤")!=-1)
-                {
-                    f_code = f_code.Replace("廃盤", "");
-                }
 
-                f_code = Tools.Fcode(f_code);
-                string xilie = docc.DocumentNode.SelectSingleNode("//div[@id='detail_new']/table/tr/td/table[@class='item_detail']/tr/td[@class='caption']/table[@class='item']/tr[4]/td[2]").InnerText.Trim();
-                //f_code = Tools.Fcode(f_code);
-                string intro = docc.DocumentNode.SelectSingleNode("//table[@class='item_detail']/tr/td[@class='text']").InnerText.Trim();
-                string coverImg = docc.DocumentNode.SelectSingleNode("//table[@class='item_detail']/tr/td/div/a").Attributes["href"].Value.Trim();
                 Movie m = new Movie()
                 {
                     Actor = basic.Actor,
-                    Title = Title,
-                    Lable = label,
-                    Maker = changjia,
-                    ReleaseDate = dtime,
-                    Minutes = minutes,
-                    AVCode = f_code,
-                    Introduction = intro,
+                    Title = titleCleaner(Title),
+                    Lable = item9,
+                    Maker = item2,//ideapocket
+                    ReleaseDate = dateCleaner(item6),
+                    Minutes = item7,
+                    AVCode = f_codeCleaner(item8),
+                    Introduction = descrition,
                     CoverURL = coverImg,
                     ItemURL = basic.ItemURL,
-                    Series = xilie,
-                    Producer = jiandu
+                    Series = item4,
+                    //导演
+                    Producer = item5
                 };
                 //Console.WriteLine(string.Format("Actor:{0}\r\nTitle:{1}\r\nLabel:{2}\r\nMaker:{3}\r\nReleaseDate:{4}\r\n番号:{5}\r\n ", m.Actor[0], m.Title, m.Lable, m.Maker, m.ReleaseDate.ToShortDateString(), m.AVCode));
                 return m;
             }
             catch (Exception)
             {
-                throw  new Exception("获取影片信息失败！");
+                throw new Exception("获取影片信息失败！");
             }
         }
+        //标题除杂
+        private string titleCleaner(string title)
+        {
+            title = Tools.RemoveInvalidChars(title);
+
+            while (title.IndexOf("&nbsp;") != -1)
+            {
+                title = title.Replace("&nbsp;", "");
+            }
+            while (title.IndexOf("廃盤") != -1)
+            {
+                title = title.Replace("廃盤", "");
+            }
+            //var ddd ="[MIDD-983]Ｂａｂｙ　Ｅｎｔｅｒｔａｉｎｍｅｎｔ×ＭＯＯＤＹＺコラボ作品　淫神の女泥棒　哀しき痙攣の追憶　Ｄｅａｒ．Ｆ　１　恥辱的、屈辱的なイカせの拷問！　反反复复反反复复方法";
+            if (title.Length > 82)
+            {
+                title = title.Substring(0, 81);
+            }
+            return title;
+        }
+        //日期
+        private DateTime dateCleaner(string date)
+        {
+            System.Text.RegularExpressions.Regex r = new System.Text.RegularExpressions.Regex(@"\d{4}/\d{2}/\d{2}");
+            if (r.IsMatch(date))
+            {
+                date = r.Match(date).Value;
+            }
+            else
+            {
+                date = "1900/01/01";
+            }
+            return DateTime.Parse(date);
+        }
+        //番号
+        private string f_codeCleaner(string f_code)
+        {
+            while (f_code.IndexOf("&nbsp;") != -1)
+            {
+                f_code = f_code.Replace("&nbsp;", "");
+            }
+            while (f_code.IndexOf("廃盤") != -1)
+            {
+                f_code = f_code.Replace("廃盤", "");
+            }
+
+            f_code = Tools.Fcode(f_code);
+            return f_code;
+        }
+
         public bool GetCover(Movie mo)
         {
             wc.ReferURL = mo.ItemURL;
@@ -268,11 +388,13 @@ namespace Gets
             mo.CoverFile = f.FullName;
             return true;
         }
+
         Uri urlCombine(string fcode)
         {
             string ur = "http://www.arzon.jp/itemlist.html?t=&m=all&s=&mkt=all&disp=30&sort=-saledate&list=list&q=" + fcode;
             return new Uri(ur);
         }
+
         public object Clone()
         {
             //MemoryStream ms = new MemoryStream();

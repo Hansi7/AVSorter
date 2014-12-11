@@ -11,17 +11,3 @@ C:\Users\su\Desktop\PICSOUL2014年8月20日\PICSOUL2014年8月20日\PICSOUL\ASYC
 C:\Users\su\Desktop\PICSOUL2014年8月20日\PICSOUL2014年8月20日\PICSOUL\ASYC\bin\Debug\HtmlAgilityPack.dll
 C:\Users\su\Desktop\PICSOUL2014年8月20日\PICSOUL2014年8月20日\PICSOUL\ASYC\bin\Debug\Gets.pdb
 C:\Users\su\Desktop\PICSOUL2014年8月20日\PICSOUL2014年8月20日\PICSOUL\ASYC\bin\Debug\Entity.pdb
-E:\Codes\AVsorter\AVsorter\ASYC\bin\Debug\DB\AVDB.accdb
-E:\Codes\AVsorter\AVsorter\ASYC\bin\Debug\ASYC.exe
-E:\Codes\AVsorter\AVsorter\ASYC\bin\Debug\ASYC.pdb
-E:\Codes\AVsorter\AVsorter\ASYC\bin\Debug\Entity.dll
-E:\Codes\AVsorter\AVsorter\ASYC\bin\Debug\Gets.dll
-E:\Codes\AVsorter\AVsorter\ASYC\bin\Debug\HtmlAgilityPack.dll
-E:\Codes\AVsorter\AVsorter\ASYC\bin\Debug\Gets.pdb
-E:\Codes\AVsorter\AVsorter\ASYC\bin\Debug\Entity.pdb
-E:\Codes\AVsorter\AVsorter\ASYC\obj\Debug\ASYC.csprojResolveAssemblyReference.cache
-E:\Codes\AVsorter\AVsorter\ASYC\obj\Debug\ASYC.Form1.resources
-E:\Codes\AVsorter\AVsorter\ASYC\obj\Debug\ASYC.Properties.Resources.resources
-E:\Codes\AVsorter\AVsorter\ASYC\obj\Debug\ASYC.csproj.GenerateResource.Cache
-E:\Codes\AVsorter\AVsorter\ASYC\obj\Debug\ASYC.exe
-E:\Codes\AVsorter\AVsorter\ASYC\obj\Debug\ASYC.pdb

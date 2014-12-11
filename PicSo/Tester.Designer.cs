@@ -1,6 +1,6 @@
 ﻿namespace PicSo
 {
-    partial class InputBox
+    partial class Tester
     {
         /// <summary>
         /// Required designer variable.
@@ -28,40 +28,41 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Tester));
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.btn_OK = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 12);
+            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox1.Location = new System.Drawing.Point(0, 0);
+            this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(368, 21);
+            this.textBox1.Size = new System.Drawing.Size(729, 453);
             this.textBox1.TabIndex = 0;
-            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            this.textBox1.Text = resources.GetString("textBox1.Text");
             // 
-            // btn_OK
+            // button1
             // 
-            this.btn_OK.Location = new System.Drawing.Point(386, 10);
-            this.btn_OK.Name = "btn_OK";
-            this.btn_OK.Size = new System.Drawing.Size(75, 23);
-            this.btn_OK.TabIndex = 1;
-            this.btn_OK.Text = "OK";
-            this.btn_OK.UseVisualStyleBackColor = true;
-            this.btn_OK.Click += new System.EventHandler(this.btn_OK_Click);
+            this.button1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.button1.Location = new System.Drawing.Point(0, 421);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(729, 32);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // InputBox
+            // Tester
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(473, 45);
-            this.Controls.Add(this.btn_OK);
+            this.ClientSize = new System.Drawing.Size(729, 453);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "InputBox";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "输入";
-            this.Load += new System.EventHandler(this.InputBox_Load);
+            this.Name = "Tester";
+            this.Text = "Tester";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -70,6 +71,6 @@
         #endregion
 
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button btn_OK;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -209,32 +209,42 @@ namespace PicSo
         private void btn_MoveFile_Click(object sender, EventArgs e)
         {
             this.btn_MoveFile.Enabled = false;
-            initFileProcessor();
-            foreach (ListViewItem item in listView1.Items)
+            try
             {
-                if ((item.Tag as AVSORTER.SearchItem).IsSelected == true)
+                initFileProcessor();
+                foreach (ListViewItem item in listView1.Items)
                 {
-                    if (item.Text!="No File")
+                    if ((item.Tag as AVSORTER.SearchItem).IsSelected == true)
                     {
-                        AVSORTER.FileProcessor.GetInstance().MakeMove((item.Tag as AVSORTER.SearchItem).MovieDetail, item.Text);
-                        item.SubItems[2].Text = "移动成功！";
+                        if (item.Text != "No File")
+                        {
+                            AVSORTER.FileProcessor.GetInstance().MakeMove((item.Tag as AVSORTER.SearchItem).MovieDetail, item.Text);
+                            item.SubItems[2].Text = "移动成功！";
+                        }
+                        else
+                        {
+                            item.SubItems[2].Text = "未移动";
+                        }
+
+
+
                     }
                     else
                     {
-                        item.SubItems[2].Text = "未移动";
+                        item.SubItems[2].Text = "未指定对应影片信息";
                     }
-                    
 
-                    
                 }
-                else
-                {
-                    item.SubItems[2].Text = "未指定对应影片信息";
-                }
-
+                AVSORTER.FileProcessor.GetInstance().WriteLog();
             }
-            AVSORTER.FileProcessor.GetInstance().WriteLog();
-            this.btn_MoveFile.Enabled = true;
+            catch(Exception err )
+            {
+                MessageBox.Show(err.Message);
+            }
+            finally
+            {
+                this.btn_MoveFile.Enabled = true;
+            }
         }
 
         private void menu_BrowerFile_Click(object sender, EventArgs e)
@@ -248,6 +258,11 @@ namespace PicSo
         private void menu_ChangeFcode_Click(object sender, EventArgs e)
         {
             var inp = new InputBox();
+            if (listView1.SelectedItems.Count>0)
+            {
+                inp.InputText = listView1.SelectedItems[0].SubItems[1].Text;
+            }
+
             if (inp.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 listView1.SelectedItems[0].SubItems[1].Text = inp.InputText;

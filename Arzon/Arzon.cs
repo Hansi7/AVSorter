@@ -284,7 +284,17 @@ namespace Gets
                 //タグ：       标签
                 var item9 = docc.DocumentNode.SelectSingleNode("//table[@class='item']/tr[9]/td[2]").InnerText.Trim();
                 //作品紹介
-                var descrition = docc.DocumentNode.SelectSingleNode("//div[@class='item_text']").InnerText.Trim();
+                string descrition;
+                try
+                {
+                    descrition = docc.DocumentNode.SelectSingleNode("//div[@class='item_text']").InnerText.Trim();
+                }
+                catch (Exception)
+                {
+
+                    descrition = "";
+                }
+                
 
 
 

@@ -31,5 +31,11 @@ namespace PicSo
                 this.DialogResult = System.Windows.Forms.DialogResult.OK;
             }
         }
+
+        private void InputBox_Load(object sender, EventArgs e)
+        {
+
+            this.textBox1.Text = this.InputText;
+        }
     }
 }

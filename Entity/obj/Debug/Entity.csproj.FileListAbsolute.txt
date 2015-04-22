@@ -25,3 +25,11 @@ C:\Users\su\Desktop\PICSOUL2014年8月20日\PICSOUL2014年8月20日\PICSOUL\Enti
 C:\Users\su\Desktop\PICSOUL2014年8月20日\PICSOUL2014年8月20日\PICSOUL\Entity\obj\Debug\Entity.pdb
 C:\Users\su\Desktop\PICSOUL2014年8月20日\PICSOUL2014年8月20日\PICSOUL\Entity\obj\Debug\Entity.csprojResolveAssemblyReference.cache
 C:\Users\su\Desktop\PICSOUL2014年8月20日\PICSOUL2014年8月20日\PICSOUL\Entity\obj\Debug\AVSORTER.Properties.Resources.resources
+E:\Codes\AVsorter\AVsorter\Entity\bin\Debug\DB\AVDB.accdb
+E:\Codes\AVsorter\AVsorter\Entity\bin\Debug\Entity.dll
+E:\Codes\AVsorter\AVsorter\Entity\bin\Debug\Entity.pdb
+E:\Codes\AVsorter\AVsorter\Entity\obj\Debug\Entity.csprojResolveAssemblyReference.cache
+E:\Codes\AVsorter\AVsorter\Entity\obj\Debug\AVSORTER.Properties.Resources.resources
+E:\Codes\AVsorter\AVsorter\Entity\obj\Debug\Entity.csproj.GenerateResource.Cache
+E:\Codes\AVsorter\AVsorter\Entity\obj\Debug\Entity.dll
+E:\Codes\AVsorter\AVsorter\Entity\obj\Debug\Entity.pdb

@@ -12,7 +12,7 @@ E:\Codes\AVsorter\AVsorter\PicSo\obj\x86\Debug\PicSo.Form1.resources
 E:\Codes\AVsorter\AVsorter\PicSo\obj\x86\Debug\PicSo.InputBox.resources
 E:\Codes\AVsorter\AVsorter\PicSo\obj\x86\Debug\PicSo.MovieContainer.resources
 E:\Codes\AVsorter\AVsorter\PicSo\obj\x86\Debug\PicSo.Properties.Resources.resources
+E:\Codes\AVsorter\AVsorter\PicSo\obj\x86\Debug\PicSo.Tester.resources
 E:\Codes\AVsorter\AVsorter\PicSo\obj\x86\Debug\PicSo.csproj.GenerateResource.Cache
 E:\Codes\AVsorter\AVsorter\PicSo\obj\x86\Debug\PicSo.exe
 E:\Codes\AVsorter\AVsorter\PicSo\obj\x86\Debug\PicSo.pdb
-E:\Codes\AVsorter\AVsorter\PicSo\obj\x86\Debug\PicSo.Tester.resources

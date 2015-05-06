@@ -59,20 +59,24 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txt_sub = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.bc = new AVSORTER.BasicContainer();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.cb_AutoCorrect = new System.Windows.Forms.CheckBox();
-            this.movieContainer1 = new PicSo.MovieContainer();
             this.btn_LocalSearch = new System.Windows.Forms.Button();
             this.txt_LocalSearchKeyWord = new System.Windows.Forms.TextBox();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.txt_url = new System.Windows.Forms.TextBox();
+            this.btnFind = new System.Windows.Forms.Button();
+            this.bc = new AVSORTER.BasicContainer();
+            this.movieContainer1 = new PicSo.MovieContainer();
             this.contextMenuStrip1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -369,22 +373,11 @@
             this.label1.TabIndex = 12;
             this.label1.Text = "目标路径";
             // 
-            // bc
-            // 
-            this.bc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.bc.IsShowPic = false;
-            this.bc.ListMovieBasic = null;
-            this.bc.Location = new System.Drawing.Point(6, 341);
-            this.bc.MovieB = null;
-            this.bc.Name = "bc";
-            this.bc.Size = new System.Drawing.Size(411, 180);
-            this.bc.TabIndex = 7;
-            this.bc.Load += new System.EventHandler(this.bc_Load);
-            // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -395,9 +388,9 @@
             // 
             this.tabPage2.Controls.Add(this.listBox1);
             this.tabPage2.Controls.Add(this.cb_AutoCorrect);
-            this.tabPage2.Controls.Add(this.movieContainer1);
             this.tabPage2.Controls.Add(this.btn_LocalSearch);
             this.tabPage2.Controls.Add(this.txt_LocalSearchKeyWord);
+            this.tabPage2.Controls.Add(this.movieContainer1);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -428,16 +421,6 @@
             this.cb_AutoCorrect.Text = "自动改正";
             this.cb_AutoCorrect.UseVisualStyleBackColor = true;
             // 
-            // movieContainer1
-            // 
-            this.movieContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.movieContainer1.Location = new System.Drawing.Point(6, 176);
-            this.movieContainer1.Movie = null;
-            this.movieContainer1.MovieList = null;
-            this.movieContainer1.Name = "movieContainer1";
-            this.movieContainer1.Size = new System.Drawing.Size(913, 375);
-            this.movieContainer1.TabIndex = 2;
-            // 
             // btn_LocalSearch
             // 
             this.btn_LocalSearch.Location = new System.Drawing.Point(309, 4);
@@ -455,6 +438,57 @@
             this.txt_LocalSearchKeyWord.Size = new System.Drawing.Size(219, 21);
             this.txt_LocalSearchKeyWord.TabIndex = 0;
             this.txt_LocalSearchKeyWord.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_LocalSearchKeyWord_KeyPress);
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.btnFind);
+            this.tabPage3.Controls.Add(this.txt_url);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(965, 557);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "tabPage3";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // txt_url
+            // 
+            this.txt_url.Location = new System.Drawing.Point(6, 6);
+            this.txt_url.Name = "txt_url";
+            this.txt_url.Size = new System.Drawing.Size(414, 21);
+            this.txt_url.TabIndex = 0;
+            // 
+            // btnFind
+            // 
+            this.btnFind.Location = new System.Drawing.Point(426, 6);
+            this.btnFind.Name = "btnFind";
+            this.btnFind.Size = new System.Drawing.Size(75, 23);
+            this.btnFind.TabIndex = 1;
+            this.btnFind.Text = "btn_Find";
+            this.btnFind.UseVisualStyleBackColor = true;
+            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
+            // 
+            // bc
+            // 
+            this.bc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.bc.IsShowPic = false;
+            this.bc.ListMovieBasic = null;
+            this.bc.Location = new System.Drawing.Point(6, 341);
+            this.bc.MovieB = null;
+            this.bc.Name = "bc";
+            this.bc.Size = new System.Drawing.Size(411, 180);
+            this.bc.TabIndex = 7;
+            this.bc.Load += new System.EventHandler(this.bc_Load);
+            // 
+            // movieContainer1
+            // 
+            this.movieContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.movieContainer1.Location = new System.Drawing.Point(6, 176);
+            this.movieContainer1.Movie = null;
+            this.movieContainer1.MovieList = null;
+            this.movieContainer1.Name = "movieContainer1";
+            this.movieContainer1.Size = new System.Drawing.Size(913, 375);
+            this.movieContainer1.TabIndex = 2;
             // 
             // Form1
             // 
@@ -479,6 +513,8 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -523,6 +559,9 @@
         private System.Windows.Forms.CheckBox cb_AutoCorrect;
         private System.Windows.Forms.Button btn_rebuild;
         private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.Button btnFind;
+        private System.Windows.Forms.TextBox txt_url;
     }
 }
 

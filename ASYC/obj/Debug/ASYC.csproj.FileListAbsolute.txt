@@ -25,3 +25,17 @@ E:\Codes\AVsorter\AVsorter\ASYC\obj\Debug\ASYC.Properties.Resources.resources
 E:\Codes\AVsorter\AVsorter\ASYC\obj\Debug\ASYC.csproj.GenerateResource.Cache
 E:\Codes\AVsorter\AVsorter\ASYC\obj\Debug\ASYC.exe
 E:\Codes\AVsorter\AVsorter\ASYC\obj\Debug\ASYC.pdb
+C:\Users\jojo\Desktop\codes\avsorter\ASYC\bin\Debug\DB\AVDB.accdb
+C:\Users\jojo\Desktop\codes\avsorter\ASYC\bin\Debug\ASYC.exe
+C:\Users\jojo\Desktop\codes\avsorter\ASYC\bin\Debug\ASYC.pdb
+C:\Users\jojo\Desktop\codes\avsorter\ASYC\bin\Debug\Entity.dll
+C:\Users\jojo\Desktop\codes\avsorter\ASYC\bin\Debug\Gets.dll
+C:\Users\jojo\Desktop\codes\avsorter\ASYC\bin\Debug\HtmlAgilityPack.dll
+C:\Users\jojo\Desktop\codes\avsorter\ASYC\bin\Debug\Gets.pdb
+C:\Users\jojo\Desktop\codes\avsorter\ASYC\bin\Debug\Entity.pdb
+C:\Users\jojo\Desktop\codes\avsorter\ASYC\obj\Debug\ASYC.Form1.resources
+C:\Users\jojo\Desktop\codes\avsorter\ASYC\obj\Debug\ASYC.Properties.Resources.resources
+C:\Users\jojo\Desktop\codes\avsorter\ASYC\obj\Debug\ASYC.csproj.GenerateResource.Cache
+C:\Users\jojo\Desktop\codes\avsorter\ASYC\obj\Debug\ASYC.exe
+C:\Users\jojo\Desktop\codes\avsorter\ASYC\obj\Debug\ASYC.pdb
+C:\Users\jojo\Desktop\codes\avsorter\ASYC\obj\Debug\ASYC.csprojResolveAssemblyReference.cache

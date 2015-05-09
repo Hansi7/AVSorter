@@ -55,6 +55,11 @@ namespace Gets
         public List<MovieBasic> Query(string fcode)
         {
             Uri u = urlCombine(fcode);
+            return PageParse(u);
+        }
+
+        public List<MovieBasic> PageParse(Uri u)
+        {
             HtmlAgilityPack.HtmlDocument doc = new HtmlDocument();
             doc.LoadHtml(wc.GetHTML(u));
             //doc.DocumentNode.SelectNodes("//li[@class='saledate']/span")[3].InnerText
@@ -123,40 +128,6 @@ namespace Gets
                 l.Add(mb);
             }
             return l;
-
-
-
-
-
-
-
-            //List<MovieBasic> l = new List<MovieBasic>();
-            //for (int i = 0; i < listitems.Count; i++)
-            //{
-            //    string title = doc.DocumentNode.SelectNodes("//div[@id='listitem']/table/tr/td/div/a")[i].Attributes["title"].Value;
-            //    string itemurl = "http://" + uri.Host + doc.DocumentNode.SelectNodes("//div[@id='listitem']/table/tr/td/div/a")[i].Attributes["href"].Value;
-            //    string actor = doc.DocumentNode.SelectNodes("//div[@id='listitem']/table/tr/td/div[@class='data']/ul[1]/li[2]")[i].InnerText.Trim();
-            //    string marker = doc.DocumentNode.SelectNodes("//div[@id='listitem']/table/tr/td/div[@class='data']/ul[2]/li[2]")[i].InnerText.Trim();
-            //    string label = doc.DocumentNode.SelectNodes("//div[@id='listitem']/table/tr/td/div[@class='data']/ul[3]/li[2]")[i].InnerText.Trim();
-            //    string s_img = doc.DocumentNode.SelectNodes("//div[@id='listitem']/table/tr/td/div/a/img")[i].Attributes["src"].Value;
-
-            //    //GetMovie(itemurl, cookies);
-            //    //GetImage(itemurl, cookies);
-            //    //http://www.arzon.jp/itemlist.html?t=&m=all&s=&q=iptd+999
-
-
-            //    MovieBasic mb = new MovieBasic()
-            //    {
-            //        Title = title,
-            //        ItemURL = itemurl,
-            //        Actor = actor,
-            //        Img_s = s_img,
-            //        Label = label,
-            //        Maker = marker
-            //    };
-            //    l.Add(mb);
-            //}
-
         }
 
         /// <summary>
@@ -262,7 +233,7 @@ namespace Gets
                 docc.LoadHtml(html);
                 //web DOM Changed 2014/12/7
                 string Title = docc.DocumentNode.SelectSingleNode("//div[@id='detail_new']/div[@class='detail_title_new']/h1").InnerText.Trim();
-                string coverImg = docc.DocumentNode.SelectSingleNode("//*[@id='detail_new']/table/tr/td[1]/table/tr[1]/td[1]/div/a[1]").Attributes["href"].Value.ToString().Trim();
+                string coverImg = docc.DocumentNode.SelectSingleNode("//*[@id='detail_new']//table//table//a").Attributes["href"].Value.ToString().Trim();
 
 
                 //AV女優：

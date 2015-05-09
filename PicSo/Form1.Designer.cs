@@ -67,6 +67,7 @@
             this.movieContainer1 = new PicSo.MovieContainer();
             this.btn_LocalSearch = new System.Windows.Forms.Button();
             this.txt_LocalSearchKeyWord = new System.Windows.Forms.TextBox();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.contextMenuStrip1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -385,6 +386,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -456,6 +458,16 @@
             this.txt_LocalSearchKeyWord.TabIndex = 0;
             this.txt_LocalSearchKeyWord.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_LocalSearchKeyWord_KeyPress);
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(965, 557);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "tabPage3";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -523,6 +535,7 @@
         private System.Windows.Forms.CheckBox cb_AutoCorrect;
         private System.Windows.Forms.Button btn_rebuild;
         private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.TabPage tabPage3;
     }
 }
 

@@ -33,3 +33,10 @@ E:\Codes\AVsorter\AVsorter\Entity\obj\Debug\AVSORTER.Properties.Resources.resour
 E:\Codes\AVsorter\AVsorter\Entity\obj\Debug\Entity.csproj.GenerateResource.Cache
 E:\Codes\AVsorter\AVsorter\Entity\obj\Debug\Entity.dll
 E:\Codes\AVsorter\AVsorter\Entity\obj\Debug\Entity.pdb
+C:\Users\jojo\Desktop\codes\avsorter\Entity\bin\Debug\DB\AVDB.accdb
+C:\Users\jojo\Desktop\codes\avsorter\Entity\bin\Debug\Entity.dll
+C:\Users\jojo\Desktop\codes\avsorter\Entity\bin\Debug\Entity.pdb
+C:\Users\jojo\Desktop\codes\avsorter\Entity\obj\Debug\AVSORTER.Properties.Resources.resources
+C:\Users\jojo\Desktop\codes\avsorter\Entity\obj\Debug\Entity.csproj.GenerateResource.Cache
+C:\Users\jojo\Desktop\codes\avsorter\Entity\obj\Debug\Entity.dll
+C:\Users\jojo\Desktop\codes\avsorter\Entity\obj\Debug\Entity.pdb

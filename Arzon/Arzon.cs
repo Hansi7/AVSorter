@@ -400,5 +400,27 @@ namespace Gets
             ar.wc.m_container = value as System.Net.CookieContainer;
             return ar;
         }
+
+        public List<MovieBasic> FindInURL(string url)
+        {
+            HtmlAgilityPack.HtmlDocument doc = new HtmlDocument();
+            doc.LoadHtml(wc.GetHTML(new Uri(url)));
+            var nodes = doc.DocumentNode.SelectNodes("//div[@class='pictlist']");
+            List<MovieBasic> list = new List<MovieBasic>();
+            if ( nodes==null)
+            {
+                return list;
+            }
+            foreach (var item in nodes)
+            {
+                 var itemurl = "http://www.arzon.jp" + item.SelectSingleNode(".//dt/a").Attributes["href"].Value.ToString().Trim();
+                 var title = item.SelectSingleNode(".//dt/a").Attributes["title"].Value.ToString().Trim();
+                 var img = item.SelectSingleNode(".//img[1]").Attributes["src"].Value.ToString().Trim();
+
+                 list.Add(new MovieBasic() { ItemURL = itemurl, Img_s = img, Title = title });
+            }
+            return list;
+        }
+
     }
 }

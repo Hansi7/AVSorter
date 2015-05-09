@@ -427,6 +427,15 @@ namespace PicSo
         }
         #endregion
 
+        #region Page3
+
+        private void btnFind_Click(object sender, EventArgs e)
+        {
+            var mvbs = arzon.FindInURL(txt_url.Text);
+            MessageBox.Show("Test");
+        }
+
+        #endregion
 
 
 

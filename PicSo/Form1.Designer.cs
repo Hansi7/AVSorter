@@ -66,8 +66,9 @@
             this.btn_LocalSearch = new System.Windows.Forms.Button();
             this.txt_LocalSearchKeyWord = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.txt_url = new System.Windows.Forms.TextBox();
             this.btnFind = new System.Windows.Forms.Button();
+            this.txt_url = new System.Windows.Forms.TextBox();
+            this.txt_FindStatus = new System.Windows.Forms.TextBox();
             this.bc = new AVSORTER.BasicContainer();
             this.movieContainer1 = new PicSo.MovieContainer();
             this.contextMenuStrip1.SuspendLayout();
@@ -441,6 +442,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.txt_FindStatus);
             this.tabPage3.Controls.Add(this.btnFind);
             this.tabPage3.Controls.Add(this.txt_url);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
@@ -451,22 +453,30 @@
             this.tabPage3.Text = "tabPage3";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // txt_url
-            // 
-            this.txt_url.Location = new System.Drawing.Point(6, 6);
-            this.txt_url.Name = "txt_url";
-            this.txt_url.Size = new System.Drawing.Size(414, 21);
-            this.txt_url.TabIndex = 0;
-            // 
             // btnFind
             // 
-            this.btnFind.Location = new System.Drawing.Point(426, 6);
+            this.btnFind.Location = new System.Drawing.Point(6, 33);
             this.btnFind.Name = "btnFind";
             this.btnFind.Size = new System.Drawing.Size(75, 23);
             this.btnFind.TabIndex = 1;
             this.btnFind.Text = "btn_Find";
             this.btnFind.UseVisualStyleBackColor = true;
             this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
+            // 
+            // txt_url
+            // 
+            this.txt_url.Location = new System.Drawing.Point(6, 6);
+            this.txt_url.Name = "txt_url";
+            this.txt_url.Size = new System.Drawing.Size(953, 21);
+            this.txt_url.TabIndex = 0;
+            // 
+            // txt_FindStatus
+            // 
+            this.txt_FindStatus.Location = new System.Drawing.Point(6, 62);
+            this.txt_FindStatus.Multiline = true;
+            this.txt_FindStatus.Name = "txt_FindStatus";
+            this.txt_FindStatus.Size = new System.Drawing.Size(953, 187);
+            this.txt_FindStatus.TabIndex = 2;
             // 
             // bc
             // 
@@ -562,6 +572,7 @@
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Button btnFind;
         private System.Windows.Forms.TextBox txt_url;
+        private System.Windows.Forms.TextBox txt_FindStatus;
     }
 }
 

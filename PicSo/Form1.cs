@@ -428,16 +428,90 @@ namespace PicSo
         #endregion
 
         #region Page3
+        
 
         private void btnFind_Click(object sender, EventArgs e)
         {
+            BackgroundWorker worker = new BackgroundWorker();
+            worker.WorkerReportsProgress = true;
+            worker.ProgressChanged += worker_ProgressChanged;
+            worker.DoWork += worker_DoWork;
+            worker.RunWorkerCompleted += worker_RunWorkerCompleted;
+            worker.RunWorkerAsync(worker);
+        }
+
+        void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            //throw new NotImplementedException();
+        }
+
+        void worker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            var worker =  (e.Argument as BackgroundWorker);
+            List<AVSORTER.Movie> list = new List<AVSORTER.Movie>();
             var mvbs = arzon.FindInURL(txt_url.Text);
-            MessageBox.Show("Test");
+            worker.ReportProgress(0, "共找到影片:" + mvbs.Count.ToString());
+            int no = 0;
+            int totalNo = mvbs.Count;
+            foreach (var mvb in mvbs)
+            {
+                var fi = arzon.Clone() as AVSORTER.IGetable;
+                var mv = fi.GetMovie(mvb);
+                no++;
+                worker.ReportProgress(0, no.ToString() + "/" + totalNo.ToString());
+                worker.ReportProgress(0,mv.AVCode + "\t" + mv.Title);
+                Gets.MyWebClient wc = new Gets.MyWebClient();
+                wc.ReferURL = mvb.ItemURL;
+                string fn = mvb.Title + ".jpg";
+                fn = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SmallImageFindInURL", Path.ChangeExtension(fn, "jpg"));
+                try
+                {
+                    if (!Directory.Exists(Path.GetDirectoryName(fn)))
+                    {
+                        Directory.CreateDirectory(Path.GetDirectoryName(fn));
+                    }
+                    if (!File.Exists(fn))
+                    {
+                        wc.DownloadFile(mvb.Img_s, fn);
+                    }
+                    else
+                    {
+                        Console.WriteLine("已有封面" + fn);
+                    }
+                    worker.ReportProgress(0, mv.AVCode + "\t封面OK!");
+
+                }
+                catch (Exception s)
+                {
+                    throw new Exception("下载缩略图失败!");
+                }
+                mv.CoverFile = fn;
+                list.Add(mv);
+            }
+            StringBuilder sb = new StringBuilder();
+            foreach (AVSORTER.Movie item in list)
+            {
+                sb.Append("<div id = \"" + item.AVCode + "\" class = \"item\"><img src = \"" + item.CoverFile + "\" /><input type=\"checkbox\" />" + item.AVCode + "</div>");
+            }
+            var htmlResult = Properties.Resources.htmlResultStart + sb + Properties.Resources.htmlResultEnd;
+            System.IO.File.WriteAllText("temp.html", htmlResult);
+            System.Diagnostics.Process.Start("temp.html");
+        }
+
+        void worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            if (e.ProgressPercentage==0)
+            {
+                txt_FindStatus.AppendText(e.UserState as string + "\r\n");
+            }
         }
 
         #endregion
 
 
-
+        
     }
+
+    
+
 }

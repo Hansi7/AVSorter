@@ -46,7 +46,7 @@
     
     mimetype: application/x-microsoft.net.object.binary.base64
     value   : The object must be serialized with 
-            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
     
     mimetype: application/x-microsoft.net.object.soap.base64
@@ -60,6 +60,7 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
@@ -68,9 +69,10 @@
               <xsd:sequence>
                 <xsd:element name="value" type="xsd:string" minOccurs="0" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="name" use="required" type="xsd:string" />
               <xsd:attribute name="type" type="xsd:string" />
               <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
@@ -85,9 +87,10 @@
                 <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
                 <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
               <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
               <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
@@ -109,9 +112,86 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="htmlResultEnd" xml:space="preserve">
+    <value>&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</value>
+  </data>
+  <data name="htmlResultStart" xml:space="preserve">
+    <value>&lt;!DOCTYPE html&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+&lt;head&gt;
+    &lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8" /&gt;
+    &lt;title&gt;&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;script type="text/javascript"&gt;
+        window.onload = function () {
+            oIMGs = document.getElementsByClassName("item");
+            for (var i = 0; i &lt; oIMGs.length; i++) {
+                oIMGs[i].onclick = function (e) {
+                    if (e.srcElement.nextElementSibling.checked) {
+                        e.srcElement.nextElementSibling.checked = false;
+                    }
+                    else {
+                        e.srcElement.nextElementSibling.checked = true;
+                    }
+                    genbtn();
+                }
+            }
+        }
+        function genbtn() {
+            var sb = " ";
+            for (var i = 0; i &lt; oIMGs.length; i++) {
+                if (oIMGs[i].childNodes[1].checked==true) {
+                    sb += " " + oIMGs[i].id.toString();
+                }
+            }
+
+            var oh = document.getElementById("res");
+            oh.innerText = sb;
+        }
+
+    &lt;/script&gt;
+    &lt;style type="text/css"&gt;
+        #gen {
+             width:150px;
+             height:50px;
+             color:green;
+             clear:both;
+             float:left;
+        }
+        #bigdiv{
+            margin:0;
+            clear:both;
+        }
+        div {
+            float: left;
+        }
+
+        img {
+            width: 130px;
+            height: 180px;
+            display: block;
+        }
+
+        input {
+            position: relative;
+            top: 0;
+            margin: 0 auto;
+        }
+    &lt;/style&gt;
+    &lt;p&gt;
+        &lt;h1 id="res"&gt;
+            Click!
+        &lt;/h1&gt;
+    &lt;/p&gt;
+    &lt;div id="bigdiv"&gt;</value>
+  </data>
 </root>

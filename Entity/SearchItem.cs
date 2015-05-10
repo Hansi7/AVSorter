@@ -43,7 +43,6 @@ namespace AVSORTER
         /// </summary>
         public List<MovieBasic> MovieBasicList { get; set; }
 
-
         private QStatus _status = QStatus.未开始;
 
         public QStatus Status
@@ -185,6 +184,7 @@ namespace AVSORTER
                 OnStatusChange(this,new StatusChangeEventArgs(b,aft,msg));
             }
         }
+
         public event StatusChangeEvent OnStatusChange;
 
         private int chooseIndex = -1;
@@ -199,7 +199,6 @@ namespace AVSORTER
         {
             if (this.Getor!=null)
             {
-                
                 //this.MovieBasicList = Getor.Query(SeedString);
                 Func<string, List<MovieBasic>> fuc = new Func<string, List<MovieBasic>>(Getor.Query);
                 fuc.BeginInvoke(SeedString, queryFinishCallBack, fuc);
@@ -255,6 +254,7 @@ namespace AVSORTER
                 this.Message = _msg;
             }
         }
+
         public delegate void StatusChangeEvent(object sender, StatusChangeEventArgs e);
         /// <summary>
         /// 是否自动下载封面

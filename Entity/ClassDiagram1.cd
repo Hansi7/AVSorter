@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AVSORTER.SearchItem">
+    <Position X="2.5" Y="0.5" Width="2.5" />
+    <NestedTypes>
+      <Class Name="AVSORTER.SearchItem.StatusChangeEventArgs" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>SearchItem.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Delegate Name="AVSORTER.SearchItem.StatusChangeEvent" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>SearchItem.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AEAAQAAEAQAgEABoQAAAQJAAAgFBgAIAAAIgQAAACAA=</HashCode>
+      <FileName>SearchItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>

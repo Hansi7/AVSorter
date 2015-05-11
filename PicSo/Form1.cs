@@ -460,33 +460,38 @@ namespace PicSo
                 no++;
                 worker.ReportProgress(0, no.ToString() + "/" + totalNo.ToString());
                 worker.ReportProgress(0,mv.AVCode + "\t" + mv.Title);
-                Gets.MyWebClient wc = new Gets.MyWebClient();
-                wc.ReferURL = mvb.ItemURL;
-                string fn = mvb.Title + ".jpg";
-                fn = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SmallImageFindInURL", Path.ChangeExtension(fn, "jpg"));
-                try
+                if (mv.Actor!=null && mv.Actor.Count <= nud_ActorLessThan.Value)
                 {
-                    if (!Directory.Exists(Path.GetDirectoryName(fn)))
+                    Gets.MyWebClient wc = new Gets.MyWebClient();
+                    wc.ReferURL = mvb.ItemURL;
+                    string fn = mvb.Title + ".jpg";
+                    fn = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SmallImageFindInURL", Path.ChangeExtension(fn, "jpg"));
+                    try
                     {
-                        Directory.CreateDirectory(Path.GetDirectoryName(fn));
-                    }
-                    if (!File.Exists(fn))
-                    {
-                        wc.DownloadFile(mvb.Img_s, fn);
-                    }
-                    else
-                    {
-                        Console.WriteLine("已有封面" + fn);
-                    }
-                    worker.ReportProgress(0, mv.AVCode + "\t封面OK!");
+                        if (!Directory.Exists(Path.GetDirectoryName(fn)))
+                        {
+                            Directory.CreateDirectory(Path.GetDirectoryName(fn));
+                        }
+                        if (!File.Exists(fn))
+                        {
+                            wc.DownloadFile(mvb.Img_s, fn);
+                        }
+                        else
+                        {
+                            Console.WriteLine("已有封面" + fn);
+                        }
+                        worker.ReportProgress(0, mv.AVCode + "\t封面OK!");
 
+                    }
+                    catch
+                    { }
+                    mv.CoverFile = fn;
+                    list.Add(mv);
                 }
-                catch (Exception s)
+                else
                 {
-                    throw new Exception("下载缩略图失败!");
+                    worker.ReportProgress(0, mv.AVCode + "\t演员人数超限制\t" + mv.Title);
                 }
-                mv.CoverFile = fn;
-                list.Add(mv);
             }
             StringBuilder sb = new StringBuilder();
             foreach (AVSORTER.Movie item in list)

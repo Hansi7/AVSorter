@@ -238,6 +238,8 @@ namespace Gets
 
                 //AV女優：
                 var item1 = docc.DocumentNode.SelectSingleNode("//table[@class='item']/tr[1]/td[2]").InnerText.Trim();
+                var actorsArr = item1.Split(new char[] { ' ', '\n' }, StringSplitOptions.RemoveEmptyEntries).ToList<string>();
+
                 //AVメーカー    制造厂
                 var item2 = docc.DocumentNode.SelectSingleNode("//table[@class='item']/tr[2]/td[2]").InnerText.Trim();
                 //AVレーベル    唱片公司
@@ -271,7 +273,7 @@ namespace Gets
 
                 Movie m = new Movie()
                 {
-                    Actor = basic.Actor,
+                    Actor = actorsArr,
                     Title = titleCleaner(Title),
                     Lable = item9,
                     Maker = item2,//ideapocket

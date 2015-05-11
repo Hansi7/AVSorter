@@ -66,11 +66,13 @@
             this.btn_LocalSearch = new System.Windows.Forms.Button();
             this.txt_LocalSearchKeyWord = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.txt_FindStatus = new System.Windows.Forms.TextBox();
             this.btnFind = new System.Windows.Forms.Button();
             this.txt_url = new System.Windows.Forms.TextBox();
-            this.txt_FindStatus = new System.Windows.Forms.TextBox();
+            this.nud_ActorLessThan = new System.Windows.Forms.NumericUpDown();
             this.bc = new AVSORTER.BasicContainer();
             this.movieContainer1 = new PicSo.MovieContainer();
+            this.label3 = new System.Windows.Forms.Label();
             this.contextMenuStrip1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -78,6 +80,7 @@
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_ActorLessThan)).BeginInit();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -442,6 +445,8 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.label3);
+            this.tabPage3.Controls.Add(this.nud_ActorLessThan);
             this.tabPage3.Controls.Add(this.txt_FindStatus);
             this.tabPage3.Controls.Add(this.btnFind);
             this.tabPage3.Controls.Add(this.txt_url);
@@ -452,6 +457,14 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "tabPage3";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // txt_FindStatus
+            // 
+            this.txt_FindStatus.Location = new System.Drawing.Point(6, 62);
+            this.txt_FindStatus.Multiline = true;
+            this.txt_FindStatus.Name = "txt_FindStatus";
+            this.txt_FindStatus.Size = new System.Drawing.Size(953, 187);
+            this.txt_FindStatus.TabIndex = 2;
             // 
             // btnFind
             // 
@@ -470,13 +483,17 @@
             this.txt_url.Size = new System.Drawing.Size(953, 21);
             this.txt_url.TabIndex = 0;
             // 
-            // txt_FindStatus
+            // nud_ActorLessThan
             // 
-            this.txt_FindStatus.Location = new System.Drawing.Point(6, 62);
-            this.txt_FindStatus.Multiline = true;
-            this.txt_FindStatus.Name = "txt_FindStatus";
-            this.txt_FindStatus.Size = new System.Drawing.Size(953, 187);
-            this.txt_FindStatus.TabIndex = 2;
+            this.nud_ActorLessThan.Location = new System.Drawing.Point(278, 33);
+            this.nud_ActorLessThan.Name = "nud_ActorLessThan";
+            this.nud_ActorLessThan.Size = new System.Drawing.Size(48, 21);
+            this.nud_ActorLessThan.TabIndex = 3;
+            this.nud_ActorLessThan.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // bc
             // 
@@ -499,6 +516,15 @@
             this.movieContainer1.Name = "movieContainer1";
             this.movieContainer1.Size = new System.Drawing.Size(913, 375);
             this.movieContainer1.TabIndex = 2;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(87, 38);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(185, 12);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "不统计演员人数超过此数量的影片";
             // 
             // Form1
             // 
@@ -525,6 +551,7 @@
             this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_ActorLessThan)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -573,6 +600,8 @@
         private System.Windows.Forms.Button btnFind;
         private System.Windows.Forms.TextBox txt_url;
         private System.Windows.Forms.TextBox txt_FindStatus;
+        private System.Windows.Forms.NumericUpDown nud_ActorLessThan;
+        private System.Windows.Forms.Label label3;
     }
 }
 

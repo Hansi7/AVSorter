@@ -237,7 +237,7 @@ namespace PicSo
                 }
                 AVSORTER.FileProcessor.GetInstance().WriteLog();
             }
-            catch(Exception err )
+            catch (Exception err)
             {
                 MessageBox.Show(err.Message);
             }
@@ -258,7 +258,7 @@ namespace PicSo
         private void menu_ChangeFcode_Click(object sender, EventArgs e)
         {
             var inp = new InputBox();
-            if (listView1.SelectedItems.Count>0)
+            if (listView1.SelectedItems.Count > 0)
             {
                 inp.InputText = listView1.SelectedItems[0].SubItems[1].Text;
             }
@@ -342,13 +342,21 @@ namespace PicSo
             this.listView1.Items.Add(li);
 
         }
+        private void btn_paste_new_Click(object sender, EventArgs e)
+        {
+            if (Clipboard.ContainsText())
+            {
+                txt_EmptyItemKeyWord.Text = Clipboard.GetText();
+                btn_AddNewEmptyItem_Click(this, new EventArgs());
+            }
+        }
 
         private void listView1_DoubleClick(object sender, EventArgs e)
         {
             if (this.listView1.SelectedItems.Count > 0)
             {
                 var d = (listView1.SelectedItems[0].Tag as AVSORTER.SearchItem);
-                if (d.MovieDetail != null &&  !string.IsNullOrEmpty(d.MovieDetail.CoverFile))
+                if (d.MovieDetail != null && d != null && !string.IsNullOrEmpty(d.MovieDetail.CoverFile))
                 {
                     System.Diagnostics.Process.Start(d.MovieDetail.CoverFile);
                 }
@@ -413,14 +421,14 @@ namespace PicSo
         }
         private void txt_LocalSearchKeyWord_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar==13)
+            if (e.KeyChar == 13)
             {
                 btn_LocalSearch_Click(sender, e);
             }
         }
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (this.listBox1.SelectedItems.Count>0)
+            if (this.listBox1.SelectedItems.Count > 0)
             {
                 this.movieContainer1.Movie = (this.listBox1.SelectedItem as AVSORTER.Movie);
             }
@@ -428,7 +436,7 @@ namespace PicSo
         #endregion
 
         #region Page3
-        
+
 
         private void btnFind_Click(object sender, EventArgs e)
         {
@@ -447,7 +455,7 @@ namespace PicSo
 
         void worker_DoWork(object sender, DoWorkEventArgs e)
         {
-            var worker =  (e.Argument as BackgroundWorker);
+            var worker = (e.Argument as BackgroundWorker);
             List<AVSORTER.Movie> list = new List<AVSORTER.Movie>();
             var mvbs = arzon.FindInURL(txt_url.Text);
             worker.ReportProgress(0, "共找到影片:" + mvbs.Count.ToString());
@@ -459,8 +467,8 @@ namespace PicSo
                 var mv = fi.GetMovie(mvb);
                 no++;
                 worker.ReportProgress(0, no.ToString() + "/" + totalNo.ToString());
-                worker.ReportProgress(0,mv.AVCode + "\t" + mv.Title);
-                if (mv.Actor!=null && mv.Actor.Count <= nud_ActorLessThan.Value)
+                worker.ReportProgress(0, mv.AVCode + "\t" + mv.Title);
+                if (mv.Actor != null && mv.Actor.Count <= nud_ActorLessThan.Value)
                 {
                     Gets.MyWebClient wc = new Gets.MyWebClient();
                     wc.ReferURL = mvb.ItemURL;
@@ -505,7 +513,7 @@ namespace PicSo
 
         void worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            if (e.ProgressPercentage==0)
+            if (e.ProgressPercentage == 0)
             {
                 txt_FindStatus.AppendText(e.UserState as string + "\r\n");
             }
@@ -514,9 +522,97 @@ namespace PicSo
         #endregion
 
 
-        
+        #region Page4
+        private void btn_p4_Go1_Click(object sender, EventArgs e)
+        {
+            lbl_p4_status.Visible = true;
+            btn_p4_Go1.Enabled = false;
+            btn_p4_Go1_paste.Enabled = false;
+
+
+            BackgroundWorker workerP4 = new BackgroundWorker();
+            workerP4.WorkerReportsProgress = true;
+            workerP4.ProgressChanged += workerP4_ProgressChanged;
+            workerP4.DoWork += workerP4_DoWork;
+            workerP4.RunWorkerCompleted += workerP4_RunWorkerCompleted;
+            workerP4.RunWorkerAsync();
+
+        }
+        void workerP4_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            lbl_p4_status.Visible = false;
+            btn_p4_Go1.Enabled = true;
+            btn_p4_Go1_paste.Enabled = true;
+        }
+
+        void workerP4_DoWork(object sender, DoWorkEventArgs e)
+        {
+            Gets.HttpHelper help = new Gets.HttpHelper(new System.Net.CookieContainer());
+            var html = help.GetHtml("http://www.torrentkitty.net/search/" + txt_p4_keyword.Text.Trim());
+            Console.WriteLine(html);
+            HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
+            doc.LoadHtml(html);
+
+            if (doc.DocumentNode.SelectNodes("//table[@id='archiveResult']/tr") == null)
+            {
+                return;
+            }
+
+            int n = doc.DocumentNode.SelectNodes("//table[@id='archiveResult']/tr").Count;
+
+            for (int i = 2; i < n; i++)
+            {
+                var name = doc.DocumentNode.SelectSingleNode("//table[@id='archiveResult']/tr[" + i + "]/td[@class='name']").InnerText;
+                ListViewItem li = new ListViewItem(name);
+                var size = doc.DocumentNode.SelectSingleNode("//table[@id='archiveResult']/tr[" + i + "]/td[@class='size']").InnerText;
+                li.SubItems.Add(size);
+                var link = doc.DocumentNode.SelectSingleNode("//table[@id='archiveResult']/tr[" + i + "]/td[@class='action']/a[2]").Attributes["href"].Value;
+                li.SubItems.Add(link);
+                lv_p4_result.Items.Add(li);
+            }
+            lv_p4_result.Items.Add(new ListViewItem("====="));
+        }
+
+        void workerP4_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            
+        }
+        private void cmenu_p4_item_copy_Click(object sender, EventArgs e)
+        {
+            if (lv_p4_result.SelectedItems.Count==1)
+            {
+                var link=  lv_p4_result.SelectedItems[0].SubItems[2].Text;
+
+                Clipboard.SetText(link);
+
+            }
+        }
+        private void btn_p4_Clear_Click(object sender, EventArgs e)
+        {
+            lv_p4_result.Items.Clear();
+        }
+        private void btn_p4_Go1_paste_Click(object sender, EventArgs e)
+        {
+            if (Clipboard.ContainsText())
+            {
+                txt_p4_keyword.Text = Clipboard.GetText();
+                btn_p4_Go1_Click(this, new EventArgs());
+            }
+        }
+        #endregion
+
+
+
+
+
+
+
+
+
+
+
     }
 
-    
+
 
 }

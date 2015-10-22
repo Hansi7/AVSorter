@@ -11,7 +11,7 @@ namespace AVSORTER
     {
         public static string Fcode(string code)
         {
-            Regex r1 = new Regex(@"(\d{0,1}[a-zA-Z]{2,5})[- _]{0,1}(\d{2,4})");
+            Regex r1 = new Regex(@"(\d{0,1}[a-zA-Z]{2,5})[- _]{0,1}(\d{2,5})");
 
             if (r1.Match(code).Value=="")
 	        {

@@ -39,6 +39,7 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.btn_rebuild = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btn_paste_new = new System.Windows.Forms.Button();
             this.btn_AddNewEmptyItem = new System.Windows.Forms.Button();
             this.txt_EmptyItemKeyWord = new System.Windows.Forms.TextBox();
             this.listView1 = new System.Windows.Forms.ListView();
@@ -66,13 +67,26 @@
             this.btn_LocalSearch = new System.Windows.Forms.Button();
             this.txt_LocalSearchKeyWord = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label3 = new System.Windows.Forms.Label();
+            this.nud_ActorLessThan = new System.Windows.Forms.NumericUpDown();
             this.txt_FindStatus = new System.Windows.Forms.TextBox();
             this.btnFind = new System.Windows.Forms.Button();
             this.txt_url = new System.Windows.Forms.TextBox();
-            this.nud_ActorLessThan = new System.Windows.Forms.NumericUpDown();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.btn_p4_Clear = new System.Windows.Forms.Button();
+            this.lv_p4_result = new System.Windows.Forms.ListView();
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.cmenu_p4 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cmenu_p4_item_copy = new System.Windows.Forms.ToolStripMenuItem();
+            this.btn_p4_Go1 = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txt_p4_keyword = new System.Windows.Forms.TextBox();
+            this.btn_p4_Go1_paste = new System.Windows.Forms.Button();
             this.bc = new AVSORTER.BasicContainer();
             this.movieContainer1 = new PicSo.MovieContainer();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lbl_p4_status = new System.Windows.Forms.Label();
             this.contextMenuStrip1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -81,6 +95,8 @@
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nud_ActorLessThan)).BeginInit();
+            this.tabPage4.SuspendLayout();
+            this.cmenu_p4.SuspendLayout();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -159,6 +175,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btn_paste_new);
             this.groupBox2.Controls.Add(this.btn_AddNewEmptyItem);
             this.groupBox2.Controls.Add(this.txt_EmptyItemKeyWord);
             this.groupBox2.Controls.Add(this.listView1);
@@ -175,13 +192,23 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "文件列表处理";
             // 
+            // btn_paste_new
+            // 
+            this.btn_paste_new.Location = new System.Drawing.Point(159, 49);
+            this.btn_paste_new.Name = "btn_paste_new";
+            this.btn_paste_new.Size = new System.Drawing.Size(107, 23);
+            this.btn_paste_new.TabIndex = 20;
+            this.btn_paste_new.Text = "粘贴新建";
+            this.btn_paste_new.UseVisualStyleBackColor = true;
+            this.btn_paste_new.Click += new System.EventHandler(this.btn_paste_new_Click);
+            // 
             // btn_AddNewEmptyItem
             // 
-            this.btn_AddNewEmptyItem.Location = new System.Drawing.Point(139, 47);
+            this.btn_AddNewEmptyItem.Location = new System.Drawing.Point(75, 49);
             this.btn_AddNewEmptyItem.Name = "btn_AddNewEmptyItem";
-            this.btn_AddNewEmptyItem.Size = new System.Drawing.Size(127, 23);
+            this.btn_AddNewEmptyItem.Size = new System.Drawing.Size(78, 23);
             this.btn_AddNewEmptyItem.TabIndex = 19;
-            this.btn_AddNewEmptyItem.Text = "新建查询条目";
+            this.btn_AddNewEmptyItem.Text = "新建";
             this.btn_AddNewEmptyItem.UseVisualStyleBackColor = true;
             this.btn_AddNewEmptyItem.Click += new System.EventHandler(this.btn_AddNewEmptyItem_Click);
             // 
@@ -189,7 +216,7 @@
             // 
             this.txt_EmptyItemKeyWord.Location = new System.Drawing.Point(6, 49);
             this.txt_EmptyItemKeyWord.Name = "txt_EmptyItemKeyWord";
-            this.txt_EmptyItemKeyWord.Size = new System.Drawing.Size(127, 21);
+            this.txt_EmptyItemKeyWord.Size = new System.Drawing.Size(63, 21);
             this.txt_EmptyItemKeyWord.TabIndex = 18;
             // 
             // listView1
@@ -382,6 +409,7 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -455,37 +483,21 @@
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage3.Size = new System.Drawing.Size(965, 557);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "tabPage3";
+            this.tabPage3.Text = "番号提取";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // txt_FindStatus
+            // label3
             // 
-            this.txt_FindStatus.Location = new System.Drawing.Point(6, 62);
-            this.txt_FindStatus.Multiline = true;
-            this.txt_FindStatus.Name = "txt_FindStatus";
-            this.txt_FindStatus.Size = new System.Drawing.Size(953, 187);
-            this.txt_FindStatus.TabIndex = 2;
-            // 
-            // btnFind
-            // 
-            this.btnFind.Location = new System.Drawing.Point(6, 33);
-            this.btnFind.Name = "btnFind";
-            this.btnFind.Size = new System.Drawing.Size(75, 23);
-            this.btnFind.TabIndex = 1;
-            this.btnFind.Text = "btn_Find";
-            this.btnFind.UseVisualStyleBackColor = true;
-            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
-            // 
-            // txt_url
-            // 
-            this.txt_url.Location = new System.Drawing.Point(6, 6);
-            this.txt_url.Name = "txt_url";
-            this.txt_url.Size = new System.Drawing.Size(953, 21);
-            this.txt_url.TabIndex = 0;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(87, 43);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(185, 12);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "不统计演员人数超过此数量的影片";
             // 
             // nud_ActorLessThan
             // 
-            this.nud_ActorLessThan.Location = new System.Drawing.Point(278, 33);
+            this.nud_ActorLessThan.Location = new System.Drawing.Point(278, 38);
             this.nud_ActorLessThan.Name = "nud_ActorLessThan";
             this.nud_ActorLessThan.Size = new System.Drawing.Size(48, 21);
             this.nud_ActorLessThan.TabIndex = 3;
@@ -494,6 +506,139 @@
             0,
             0,
             0});
+            // 
+            // txt_FindStatus
+            // 
+            this.txt_FindStatus.Location = new System.Drawing.Point(6, 67);
+            this.txt_FindStatus.Multiline = true;
+            this.txt_FindStatus.Name = "txt_FindStatus";
+            this.txt_FindStatus.Size = new System.Drawing.Size(953, 187);
+            this.txt_FindStatus.TabIndex = 2;
+            this.txt_FindStatus.Text = "粘贴arzon.jp的影片网址列表，要列表模式，不要图片模式";
+            // 
+            // btnFind
+            // 
+            this.btnFind.Location = new System.Drawing.Point(6, 38);
+            this.btnFind.Name = "btnFind";
+            this.btnFind.Size = new System.Drawing.Size(75, 23);
+            this.btnFind.TabIndex = 1;
+            this.btnFind.Text = "开始";
+            this.btnFind.UseVisualStyleBackColor = true;
+            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
+            // 
+            // txt_url
+            // 
+            this.txt_url.Location = new System.Drawing.Point(6, 11);
+            this.txt_url.Name = "txt_url";
+            this.txt_url.Size = new System.Drawing.Size(953, 21);
+            this.txt_url.TabIndex = 0;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.lbl_p4_status);
+            this.tabPage4.Controls.Add(this.btn_p4_Go1_paste);
+            this.tabPage4.Controls.Add(this.btn_p4_Clear);
+            this.tabPage4.Controls.Add(this.lv_p4_result);
+            this.tabPage4.Controls.Add(this.btn_p4_Go1);
+            this.tabPage4.Controls.Add(this.label4);
+            this.tabPage4.Controls.Add(this.txt_p4_keyword);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(965, 557);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "下载地址搜索";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // btn_p4_Clear
+            // 
+            this.btn_p4_Clear.Location = new System.Drawing.Point(17, 528);
+            this.btn_p4_Clear.Name = "btn_p4_Clear";
+            this.btn_p4_Clear.Size = new System.Drawing.Size(75, 23);
+            this.btn_p4_Clear.TabIndex = 5;
+            this.btn_p4_Clear.Text = "清空结果";
+            this.btn_p4_Clear.UseVisualStyleBackColor = true;
+            this.btn_p4_Clear.Click += new System.EventHandler(this.btn_p4_Clear_Click);
+            // 
+            // lv_p4_result
+            // 
+            this.lv_p4_result.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader4,
+            this.columnHeader5,
+            this.columnHeader6});
+            this.lv_p4_result.ContextMenuStrip = this.cmenu_p4;
+            this.lv_p4_result.FullRowSelect = true;
+            this.lv_p4_result.Location = new System.Drawing.Point(17, 37);
+            this.lv_p4_result.Name = "lv_p4_result";
+            this.lv_p4_result.Size = new System.Drawing.Size(923, 485);
+            this.lv_p4_result.TabIndex = 4;
+            this.lv_p4_result.UseCompatibleStateImageBehavior = false;
+            this.lv_p4_result.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "名称";
+            this.columnHeader4.Width = 537;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "大小";
+            this.columnHeader5.Width = 100;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "链接";
+            this.columnHeader6.Width = 254;
+            // 
+            // cmenu_p4
+            // 
+            this.cmenu_p4.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cmenu_p4_item_copy});
+            this.cmenu_p4.Name = "cmenu_p4";
+            this.cmenu_p4.Size = new System.Drawing.Size(125, 26);
+            // 
+            // cmenu_p4_item_copy
+            // 
+            this.cmenu_p4_item_copy.Name = "cmenu_p4_item_copy";
+            this.cmenu_p4_item_copy.Size = new System.Drawing.Size(124, 22);
+            this.cmenu_p4_item_copy.Text = "复制地址";
+            this.cmenu_p4_item_copy.Click += new System.EventHandler(this.cmenu_p4_item_copy_Click);
+            // 
+            // btn_p4_Go1
+            // 
+            this.btn_p4_Go1.Location = new System.Drawing.Point(168, 8);
+            this.btn_p4_Go1.Name = "btn_p4_Go1";
+            this.btn_p4_Go1.Size = new System.Drawing.Size(75, 23);
+            this.btn_p4_Go1.TabIndex = 2;
+            this.btn_p4_Go1.Text = "搜索";
+            this.btn_p4_Go1.UseVisualStyleBackColor = true;
+            this.btn_p4_Go1.Click += new System.EventHandler(this.btn_p4_Go1_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(15, 13);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(41, 12);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "关键字";
+            // 
+            // txt_p4_keyword
+            // 
+            this.txt_p4_keyword.Location = new System.Drawing.Point(62, 10);
+            this.txt_p4_keyword.Name = "txt_p4_keyword";
+            this.txt_p4_keyword.Size = new System.Drawing.Size(100, 21);
+            this.txt_p4_keyword.TabIndex = 0;
+            // 
+            // btn_p4_Go1_paste
+            // 
+            this.btn_p4_Go1_paste.Location = new System.Drawing.Point(249, 8);
+            this.btn_p4_Go1_paste.Name = "btn_p4_Go1_paste";
+            this.btn_p4_Go1_paste.Size = new System.Drawing.Size(75, 23);
+            this.btn_p4_Go1_paste.TabIndex = 6;
+            this.btn_p4_Go1_paste.Text = "粘贴搜索";
+            this.btn_p4_Go1_paste.UseVisualStyleBackColor = true;
+            this.btn_p4_Go1_paste.Click += new System.EventHandler(this.btn_p4_Go1_paste_Click);
             // 
             // bc
             // 
@@ -517,14 +662,15 @@
             this.movieContainer1.Size = new System.Drawing.Size(913, 375);
             this.movieContainer1.TabIndex = 2;
             // 
-            // label3
+            // lbl_p4_status
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(87, 38);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(185, 12);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "不统计演员人数超过此数量的影片";
+            this.lbl_p4_status.AutoSize = true;
+            this.lbl_p4_status.Location = new System.Drawing.Point(330, 13);
+            this.lbl_p4_status.Name = "lbl_p4_status";
+            this.lbl_p4_status.Size = new System.Drawing.Size(77, 12);
+            this.lbl_p4_status.TabIndex = 7;
+            this.lbl_p4_status.Text = "正在搜索……";
+            this.lbl_p4_status.Visible = false;
             // 
             // Form1
             // 
@@ -536,7 +682,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "Form1";
             this.Text = "AVSorter";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -552,6 +697,9 @@
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nud_ActorLessThan)).EndInit();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
+            this.cmenu_p4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -602,6 +750,20 @@
         private System.Windows.Forms.TextBox txt_FindStatus;
         private System.Windows.Forms.NumericUpDown nud_ActorLessThan;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.Button btn_p4_Go1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txt_p4_keyword;
+        private System.Windows.Forms.ListView lv_p4_result;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.ContextMenuStrip cmenu_p4;
+        private System.Windows.Forms.ToolStripMenuItem cmenu_p4_item_copy;
+        private System.Windows.Forms.Button btn_p4_Clear;
+        private System.Windows.Forms.Button btn_paste_new;
+        private System.Windows.Forms.Button btn_p4_Go1_paste;
+        private System.Windows.Forms.Label lbl_p4_status;
     }
 }
 

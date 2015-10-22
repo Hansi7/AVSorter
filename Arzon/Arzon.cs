@@ -80,12 +80,13 @@ namespace Gets
             for (int i = 0; i < cou; i++)
             {
 
-                string n_title = doc.DocumentNode.SelectNodes("//div[@id='itemd']")[i].ChildNodes["ul"].ChildNodes["li"].ChildNodes["h3"].InnerText;
+                string n_title = doc.DocumentNode.SelectNodes("//div[@id='itemd']//h2/a")[i].InnerText;
                 n_title = Tools.RemoveInvalidChars(n_title);
 
-                string n_itemURL = "http://" + u.Host + doc.DocumentNode.SelectNodes("//div[@id='itemd']")[i].ChildNodes["ul"].ChildNodes["li"].ChildNodes["h3"].ChildNodes["a"].Attributes["href"].Value;
+                string n_itemURL = "http://" + u.Host + doc.DocumentNode.SelectNodes("//div[@id='itemd']//h2/a")[i].Attributes["href"].Value;
 
-                string n_date = doc.DocumentNode.SelectSingleNode("//div[@id='itemd']/ul/li/span[@class='date']").InnerText;
+                string n_date = doc.DocumentNode.SelectNodes("//div[@id='itemd']//span")[i].InnerText.Trim();
+               
 
                 var datanode = doc.DocumentNode.SelectNodes("//div[@class='data']")[i];
                 HtmlDocument docData = new HtmlDocument();
@@ -232,8 +233,8 @@ namespace Gets
                 var docc = new HtmlDocument();
                 docc.LoadHtml(html);
                 //web DOM Changed 2014/12/7
-                string Title = docc.DocumentNode.SelectSingleNode("//div[@id='detail_new']/div[@class='detail_title_new']/h1").InnerText.Trim();
-                string coverImg = docc.DocumentNode.SelectSingleNode("//*[@id='detail_new']//table//table//a").Attributes["href"].Value.ToString().Trim();
+                string Title = docc.DocumentNode.SelectSingleNode("//div[@id='detail_new']//div[@class='detail_title_new2']//h1").InnerText;
+                string coverImg = docc.DocumentNode.SelectNodes("//div[@id='detail_new']//img[@class='item_img']")[0].Attributes["src"].Value.ToString();
 
 
                 //AV女優：

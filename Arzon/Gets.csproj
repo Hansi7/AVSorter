@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Arzon.cs" />
     <Compile Include="AVEntertainments.cs" />
+    <Compile Include="HttpHelper.cs" />
     <Compile Include="MywebClient.cs">
       <SubType>Component</SubType>
     </Compile>

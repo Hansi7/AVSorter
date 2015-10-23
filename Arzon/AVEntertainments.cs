@@ -5,19 +5,16 @@ using System.Text;
 using System.Collections.Specialized;
 using HtmlAgilityPack;
 using AVSORTER;
+using System.IO;
 
 namespace Gets
 {
     public class AVEntertainments:IGetable
     {
         MyWebClient wc;
-        Uri uri;
         public AVEntertainments()
         {
-            const string url = "http://www.aventertainments.com/search_Products.aspx?languageID=2";
-            uri = new Uri(url);
             wc = new MyWebClient();
-            wc.DownloadData(uri);
         }
         public List<MovieBasic> Query(string keyword)
         {
@@ -104,17 +101,17 @@ namespace Gets
             string jiandu = string .Empty;
             string date = docc.DocumentNode.SelectNodes("//span[@class='redtitle']")[4].ParentNode.InnerText;
             string minutes = docc.DocumentNode.SelectNodes("//span[@class='redtitle']")[5].ParentNode.InnerText;
-            string f_code = movieBasic.Label;
+            string f_code = docc.DocumentNode.SelectNodes("//div[@class='top-title']")[0].InnerText.Replace("商品番号:","");
             string xilie = docc.DocumentNode.SelectNodes("//span[@class='redtitle']")[2].ParentNode.ChildNodes["a"].InnerText;
             string intro = docc.DocumentNode.SelectNodes("//div[@id='titlebox']/div[5]/p")[0].InnerText;
-            string coverImage = docc.DocumentNode.SelectNodes("//div[@class='top_sample']")[0].InnerHtml;
-            int st = coverImage.IndexOf("ImageUrl=") + 9;
-            int ed = coverImage.IndexOf(",", st);
-            coverImage = coverImage.Substring(st, ed - st);
-
-
-            //docc.DocumentNode.SelectNodes("//span[@class='redtitle']")[1].ParentNode.ChildNodes["a"].InnerText
-
+            string coverImage = docc.DocumentNode.SelectNodes("//div[@class='top_sample']")[0].InnerText.Trim();
+            var imageFlag = "image: '";
+            //找到imageFlag
+            var st_num = coverImage.IndexOf(imageFlag);
+            //找到imageFlag之后的引号
+            var ed_num = coverImage.IndexOf('\'', st_num +imageFlag.Length);
+            //截取刚才的两个找到的中间部分
+            coverImage = coverImage.Substring(st_num + imageFlag.Length, ed_num - st_num - imageFlag.Length);
 
             System.Text.RegularExpressions.Regex r = new System.Text.RegularExpressions.Regex(@"\d{1,2}/\d{1,2}/\d{4}");
             date = r.Match(date).Value;
@@ -141,18 +138,52 @@ namespace Gets
 
         public bool GetCover(Movie mo)
         {
-            throw new NotImplementedException();
+            wc.ReferURL = mo.ItemURL;
+            FileInfo f = new FileInfo(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "AVE_Cover", mo.AVCode + ".jpg"));
+            try
+            {
+                if (!Directory.Exists(Path.GetDirectoryName(f.FullName)))
+                {
+                    Directory.CreateDirectory(Path.GetDirectoryName(f.FullName));
+                }
+                if (!File.Exists(f.FullName))
+                {
+                    wc.DownloadFile(mo.CoverURL, f.FullName);
+                }
+                else
+                {
+                    Console.WriteLine("已有封面 " + mo.Title);
+                }
+            }
+            catch (Exception err)
+            {
+                return false;
+            }
+            mo.CoverFile = f.FullName;
+            return true;
+        }
+
+        public string GetScreen_shotURL(Movie mo)
+        {
+            if (!string.IsNullOrEmpty(mo.CoverURL))
+            {
+                return mo.CoverURL.Replace("bigcover", "screen_shot");
+            }
+            else
+            {
+                return string.Empty;
+            }
         }
 
         public bool IsInitCompleted
         {
             get
             {
-                throw new NotImplementedException();
+                return true;
             }
             set
             {
-                throw new NotImplementedException();
+                return;
             }
         }
     }

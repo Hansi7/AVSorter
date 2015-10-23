@@ -79,9 +79,9 @@
       <Project>{9262f4c4-2d81-41ab-a444-57d3a21cea9b}</Project>
       <Name>Gets</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Entity\Entity.csproj">
+    <ProjectReference Include="..\Entity\AVSORTER.csproj">
       <Project>{21d25a8a-680f-4c0a-815b-ae394905a64a}</Project>
-      <Name>Entity</Name>
+      <Name>AVSORTER</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

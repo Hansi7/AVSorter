@@ -41,16 +41,20 @@ namespace Gets
         {
             if ((e.UserState as string) == "init")
             {
-                this.IsInitCompleted = true;
-                if (this.InitCompleted!=null)
+                if (e.Error==null)
                 {
-                    this.InitCompleted(this, new EventArgs());
+                    this.IsInitCompleted = true;
+                    if (this.InitCompleted != null)
+                    {
+                        this.InitCompleted(this, new EventArgs());
+                    }
                 }
-
             }
         }
 
         public bool IsInitCompleted { get; set; }
+
+
 
         public List<MovieBasic> Query(string fcode)
         {
@@ -58,7 +62,7 @@ namespace Gets
             return PageParse(u);
         }
 
-        public List<MovieBasic> PageParse(Uri u)
+        private List<MovieBasic> PageParse(Uri u)
         {
             HtmlAgilityPack.HtmlDocument doc = new HtmlDocument();
             doc.LoadHtml(wc.GetHTML(u));

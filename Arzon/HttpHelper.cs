@@ -304,6 +304,34 @@ namespace Gets
             }
         }
 
+        public int DownloadFile(string url ,string fileName,System.IO.FileMode fm,int bufferSize)
+        {
+            try
+            {
+                var s = GetStream(url, this.CookieContainer);
+                System.IO.FileStream fs = new System.IO.FileStream(fileName, fm);
+                byte[] buffer = new byte[bufferSize];
+                int count = s.Read(buffer, 0, buffer.Length);
+                while (count > 0)
+                {
+                    fs.Write(buffer, 0, count);
+                    count = s.Read(buffer, 0, buffer.Length);
+                }
+                s.Close();
+                fs.Close();
+                return 1;
+            }
+            catch (Exception err)
+            {
+                return 0;
+                throw new Exception(err.Message + "下载文件失败");
+            }
+        }
+        public int DownloadFile(string url, string fileName)
+        {
+            return DownloadFile(url, fileName, FileMode.Create, 1024);
+        }
+
         #endregion
     }
 

@@ -20,6 +20,7 @@ namespace AVSORTER.DB
         public Helper(string connectionString)
         {
             ConnectString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + b;
+            
             if (connectionString== string.Empty)
             {
                 connection = new OleDbConnection(ConnectString);

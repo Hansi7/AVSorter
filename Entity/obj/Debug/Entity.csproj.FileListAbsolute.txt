@@ -40,3 +40,11 @@ C:\Users\jojo\Desktop\codes\avsorter\Entity\obj\Debug\AVSORTER.Properties.Resour
 C:\Users\jojo\Desktop\codes\avsorter\Entity\obj\Debug\Entity.csproj.GenerateResource.Cache
 C:\Users\jojo\Desktop\codes\avsorter\Entity\obj\Debug\Entity.dll
 C:\Users\jojo\Desktop\codes\avsorter\Entity\obj\Debug\Entity.pdb
+F:\avsorter\Entity\bin\Debug\DB\AVDB.accdb
+F:\avsorter\Entity\bin\Debug\Entity.dll
+F:\avsorter\Entity\bin\Debug\Entity.pdb
+F:\avsorter\Entity\obj\Debug\Entity.csprojResolveAssemblyReference.cache
+F:\avsorter\Entity\obj\Debug\AVSORTER.Properties.Resources.resources
+F:\avsorter\Entity\obj\Debug\Entity.csproj.GenerateResource.Cache
+F:\avsorter\Entity\obj\Debug\Entity.dll
+F:\avsorter\Entity\obj\Debug\Entity.pdb

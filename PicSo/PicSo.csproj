@@ -123,11 +123,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Arzon\Gets.csproj">
+    <ProjectReference Include="..\Gets\Gets.csproj">
       <Project>{9262F4C4-2D81-41AB-A444-57D3A21CEA9B}</Project>
       <Name>Gets</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Entity\AVSORTER.csproj">
+    <ProjectReference Include="..\Entity\Entity.csproj">
       <Project>{21D25A8A-680F-4C0A-815B-AE394905A64A}</Project>
       <Name>AVSORTER</Name>
     </ProjectReference>

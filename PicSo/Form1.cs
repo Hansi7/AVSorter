@@ -544,7 +544,11 @@ namespace PicSo
             btn_p4_Go1.Enabled = true;
             btn_p4_Go1_paste.Enabled = true;
         }
-
+        /// <summary>
+        /// torrentKitty
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void workerP4_DoWork(object sender, DoWorkEventArgs e)
         {
             Gets.HttpHelper help = new Gets.HttpHelper(new System.Net.CookieContainer());

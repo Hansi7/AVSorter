@@ -43,7 +43,6 @@ F:\avsorter\PicSo\obj\x86\Debug\PicSo.Form1.resources
 F:\avsorter\PicSo\obj\x86\Debug\PicSo.InputBox.resources
 F:\avsorter\PicSo\obj\x86\Debug\PicSo.MovieContainer.resources
 F:\avsorter\PicSo\obj\x86\Debug\PicSo.Properties.Resources.resources
-F:\avsorter\PicSo\obj\x86\Debug\PicSo.Tester.resources
 F:\avsorter\PicSo\obj\x86\Debug\PicSo.csproj.GenerateResource.Cache
 F:\avsorter\PicSo\bin\Debug\DB\AVDB.accdb
 F:\avsorter\PicSo\bin\Debug\PicSo.exe

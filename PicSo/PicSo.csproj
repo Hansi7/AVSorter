@@ -80,12 +80,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tester.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Tester.Designer.cs">
-      <DependentUpon>Tester.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="BasicContainer.resx">
       <DependentUpon>BasicContainer.cs</DependentUpon>
     </EmbeddedResource>
@@ -108,9 +102,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Tester.resx">
-      <DependentUpon>Tester.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -241,6 +241,11 @@ namespace Gets
                 string coverImg = docc.DocumentNode.SelectNodes("//div[@id='detail_new']//img[@class='item_img']")[0].Attributes["src"].Value.ToString();
 
 
+                if (coverImg.StartsWith("//"))
+                {
+                    coverImg = "http:" + coverImg;
+                }
+
                 //AV女優：
                 var item1 = docc.DocumentNode.SelectSingleNode("//table[@class='item']/tr[1]/td[2]").InnerText.Trim();
                 var actorsArr = item1.Split(new char[] { ' ', '\n' }, StringSplitOptions.RemoveEmptyEntries).ToList<string>();

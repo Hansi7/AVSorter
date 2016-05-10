@@ -230,6 +230,11 @@ namespace AVSORTER
             //    destFile = destFile.Replace(cr.ToString(), "");
             //}
 
+
+            if (sourceFile==destFile)
+            {
+                return;
+            }
             if (!Directory.Exists(Path.GetDirectoryName(destFile)))
             {
                 try

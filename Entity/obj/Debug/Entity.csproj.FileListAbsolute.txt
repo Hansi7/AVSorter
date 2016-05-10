@@ -48,3 +48,10 @@ F:\avsorter\Entity\obj\Debug\AVSORTER.Properties.Resources.resources
 F:\avsorter\Entity\obj\Debug\Entity.csproj.GenerateResource.Cache
 F:\avsorter\Entity\obj\Debug\Entity.dll
 F:\avsorter\Entity\obj\Debug\Entity.pdb
+D:\avsorter\Entity\bin\Debug\DB\AVDB.accdb
+D:\avsorter\Entity\bin\Debug\Entity.dll
+D:\avsorter\Entity\bin\Debug\Entity.pdb
+D:\avsorter\Entity\obj\Debug\AVSORTER.Properties.Resources.resources
+D:\avsorter\Entity\obj\Debug\Entity.dll
+D:\avsorter\Entity\obj\Debug\Entity.pdb
+D:\avsorter\Entity\obj\Debug\Entity.csproj.GenerateResource.Cache

@@ -103,6 +103,17 @@ namespace AVSORTER
 
         private void _startGetMovie()
         {
+            if (OnAboutToLoadImage == null)
+            {
+                throw new Exception("必须注册这个事件");
+            }
+            else
+            {
+                OnAboutToLoadImage(this, new EventArgs());
+            }
+
+
+
             try
             {
                 if (this.chooseIndex != -1)
@@ -148,6 +159,17 @@ namespace AVSORTER
             catch (Exception)
             {
                 RaiseStatusChangeEvent(QStatus.获取信息中, QStatus.出错, "获取影片信息时出错！");
+            }
+            finally
+            {
+                if (OnCompletedLoadImage == null)
+                {
+                    throw new Exception("必须注册这个事件");
+                }
+                else
+                {
+                    OnCompletedLoadImage(this, new EventArgs());
+                }
             }
             
         }
@@ -197,6 +219,16 @@ namespace AVSORTER
 
         public void StartQuery()
         {
+            if (OnAboutToLoadInfo==null)
+            {
+                throw new Exception("必须注册这个事件");
+            }
+            else
+            {
+                OnAboutToLoadInfo(this, new EventArgs());
+            }
+
+
             if (this.Getor!=null)
             {
                 //this.MovieBasicList = Getor.Query(SeedString);
@@ -214,7 +246,6 @@ namespace AVSORTER
         {
             try
             {
-
                 this.MovieBasicList = (obj.AsyncState as Func<string, List<MovieBasic>>).EndInvoke(obj);
                 if (this.MovieBasicList.Count > 1)
                 {
@@ -242,7 +273,14 @@ namespace AVSORTER
             }
             finally
             {
-                RaiseStatusChangeEvent(QStatus.准备好移动文件, QStatus.准备好移动文件, "Release1");
+                if (OnCompletedLoadInfo == null)
+                {
+                    throw new Exception("必须注册这个事件");
+                }
+                else
+                {
+                    OnCompletedLoadInfo(this, new EventArgs());
+                }
             }
 
         }
@@ -261,6 +299,17 @@ namespace AVSORTER
         }
 
         public delegate void StatusChangeEvent(object sender, StatusChangeEventArgs e);
+
+        public event EventHandler OnAboutToLoadInfo;
+
+        public event EventHandler OnCompletedLoadInfo;
+
+        public event EventHandler OnAboutToLoadImage;
+
+        public event EventHandler OnCompletedLoadImage;
+
+
+
         /// <summary>
         /// 是否自动下载封面
         /// </summary>

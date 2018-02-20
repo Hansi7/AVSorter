@@ -113,31 +113,54 @@ namespace PicSo
             }
         }
 
-        Semaphore sem = new Semaphore(2, 2);
+        Semaphore sem1_bmovie = new Semaphore(2, 2);
+        Semaphore sem2_movie = new Semaphore(2, 2);
 
         private void btn_GO_Click(object sender, EventArgs e)
         {
             foreach (ListViewItem item in listView1.Items)
             {
-                sem.WaitOne();//现在这个Semaphore是可以正常工作的。但是放在这里会阻塞主进程，弄2个semaphore，再弄2个事件。在SearchItem里专门控制
-                //下载信息的进程，以及下载图片的进程数量，是比较好的方法。
                 var fi = new AVSORTER.SearchItem(item.SubItems[1].Text, arzon.Clone() as AVSORTER.IGetable);
                 item.Tag = fi;
                 fi.OnStatusChange += fi_OnStatusChange;
                 fi.Tag = item;
                 fi.IsAutoSelect = cb_AutoSelect.Checked;
                 fi.IsDownloadCover = cb_isCoverDownload.Checked;
+                //等一个许可信号
+                fi.OnAboutToLoadInfo += Fi_OnAboutToLoadInfo;
+                //释放放一个许可
+                fi.OnCompletedLoadInfo += Fi_OnCompletedLoadInfo;
+
+                fi.OnAboutToLoadImage += Fi_OnAboutToLoadImage;
+
+                fi.OnCompletedLoadImage += Fi_OnCompletedLoadImage;
+
                 fi.StartQuery();
             }
+        }
+
+        private void Fi_OnAboutToLoadImage(object sender, EventArgs e)
+        {
+            sem2_movie.WaitOne();
+        }
+
+        private void Fi_OnCompletedLoadImage(object sender, EventArgs e)
+        {
+            sem2_movie.Release();
+        }
+        private void Fi_OnCompletedLoadInfo(object sender, EventArgs e)
+        {
+            sem1_bmovie.Release();
+        }
+
+        private void Fi_OnAboutToLoadInfo(object sender, EventArgs e)
+        {
+            sem1_bmovie.WaitOne();
         }
 
         void fi_OnStatusChange(object sender, AVSORTER.SearchItem.StatusChangeEventArgs e)
         {
             ((sender as AVSORTER.SearchItem).Tag as ListViewItem).SubItems[2].Text = e.After.ToString();
-            if (e.Message=="Release1")
-            {
-                sem.Release();
-            }
         }
 
         private void UIParamChange(object sender, EventArgs e)

@@ -60,12 +60,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txt_sub = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.bc = new AVSORTER.BasicContainer();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.cb_AutoCorrect = new System.Windows.Forms.CheckBox();
             this.btn_LocalSearch = new System.Windows.Forms.Button();
             this.txt_LocalSearchKeyWord = new System.Windows.Forms.TextBox();
+            this.movieContainer1 = new PicSo.MovieContainer();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.label3 = new System.Windows.Forms.Label();
             this.nud_ActorLessThan = new System.Windows.Forms.NumericUpDown();
@@ -73,6 +75,8 @@
             this.btnFind = new System.Windows.Forms.Button();
             this.txt_url = new System.Windows.Forms.TextBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.lbl_p4_status = new System.Windows.Forms.Label();
+            this.btn_p4_Go1_paste = new System.Windows.Forms.Button();
             this.btn_p4_Clear = new System.Windows.Forms.Button();
             this.lv_p4_result = new System.Windows.Forms.ListView();
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -83,10 +87,6 @@
             this.btn_p4_Go1 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.txt_p4_keyword = new System.Windows.Forms.TextBox();
-            this.btn_p4_Go1_paste = new System.Windows.Forms.Button();
-            this.bc = new AVSORTER.BasicContainer();
-            this.movieContainer1 = new PicSo.MovieContainer();
-            this.lbl_p4_status = new System.Windows.Forms.Label();
             this.contextMenuStrip1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -315,7 +315,7 @@
             this.btn_GO.Name = "btn_GO";
             this.btn_GO.Size = new System.Drawing.Size(110, 50);
             this.btn_GO.TabIndex = 15;
-            this.btn_GO.Text = "Go!";
+            this.btn_GO.Text = "DownloadInfo";
             this.btn_GO.UseVisualStyleBackColor = true;
             this.btn_GO.Click += new System.EventHandler(this.btn_GO_Click);
             // 
@@ -404,6 +404,18 @@
             this.label1.TabIndex = 12;
             this.label1.Text = "目标路径";
             // 
+            // bc
+            // 
+            this.bc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.bc.IsShowPic = false;
+            this.bc.ListMovieBasic = null;
+            this.bc.Location = new System.Drawing.Point(6, 341);
+            this.bc.MovieB = null;
+            this.bc.Name = "bc";
+            this.bc.Size = new System.Drawing.Size(411, 180);
+            this.bc.TabIndex = 7;
+            this.bc.Load += new System.EventHandler(this.bc_Load);
+            // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
@@ -470,6 +482,16 @@
             this.txt_LocalSearchKeyWord.Size = new System.Drawing.Size(219, 21);
             this.txt_LocalSearchKeyWord.TabIndex = 0;
             this.txt_LocalSearchKeyWord.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_LocalSearchKeyWord_KeyPress);
+            // 
+            // movieContainer1
+            // 
+            this.movieContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.movieContainer1.Location = new System.Drawing.Point(6, 176);
+            this.movieContainer1.Movie = null;
+            this.movieContainer1.MovieList = null;
+            this.movieContainer1.Name = "movieContainer1";
+            this.movieContainer1.Size = new System.Drawing.Size(913, 375);
+            this.movieContainer1.TabIndex = 2;
             // 
             // tabPage3
             // 
@@ -550,6 +572,26 @@
             this.tabPage4.Text = "下载地址搜索";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // lbl_p4_status
+            // 
+            this.lbl_p4_status.AutoSize = true;
+            this.lbl_p4_status.Location = new System.Drawing.Point(330, 13);
+            this.lbl_p4_status.Name = "lbl_p4_status";
+            this.lbl_p4_status.Size = new System.Drawing.Size(77, 12);
+            this.lbl_p4_status.TabIndex = 7;
+            this.lbl_p4_status.Text = "正在搜索……";
+            this.lbl_p4_status.Visible = false;
+            // 
+            // btn_p4_Go1_paste
+            // 
+            this.btn_p4_Go1_paste.Location = new System.Drawing.Point(249, 8);
+            this.btn_p4_Go1_paste.Name = "btn_p4_Go1_paste";
+            this.btn_p4_Go1_paste.Size = new System.Drawing.Size(75, 23);
+            this.btn_p4_Go1_paste.TabIndex = 6;
+            this.btn_p4_Go1_paste.Text = "粘贴搜索";
+            this.btn_p4_Go1_paste.UseVisualStyleBackColor = true;
+            this.btn_p4_Go1_paste.Click += new System.EventHandler(this.btn_p4_Go1_paste_Click);
+            // 
             // btn_p4_Clear
             // 
             this.btn_p4_Clear.Location = new System.Drawing.Point(17, 528);
@@ -629,48 +671,6 @@
             this.txt_p4_keyword.Name = "txt_p4_keyword";
             this.txt_p4_keyword.Size = new System.Drawing.Size(100, 21);
             this.txt_p4_keyword.TabIndex = 0;
-            // 
-            // btn_p4_Go1_paste
-            // 
-            this.btn_p4_Go1_paste.Location = new System.Drawing.Point(249, 8);
-            this.btn_p4_Go1_paste.Name = "btn_p4_Go1_paste";
-            this.btn_p4_Go1_paste.Size = new System.Drawing.Size(75, 23);
-            this.btn_p4_Go1_paste.TabIndex = 6;
-            this.btn_p4_Go1_paste.Text = "粘贴搜索";
-            this.btn_p4_Go1_paste.UseVisualStyleBackColor = true;
-            this.btn_p4_Go1_paste.Click += new System.EventHandler(this.btn_p4_Go1_paste_Click);
-            // 
-            // bc
-            // 
-            this.bc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.bc.IsShowPic = false;
-            this.bc.ListMovieBasic = null;
-            this.bc.Location = new System.Drawing.Point(6, 341);
-            this.bc.MovieB = null;
-            this.bc.Name = "bc";
-            this.bc.Size = new System.Drawing.Size(411, 180);
-            this.bc.TabIndex = 7;
-            this.bc.Load += new System.EventHandler(this.bc_Load);
-            // 
-            // movieContainer1
-            // 
-            this.movieContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.movieContainer1.Location = new System.Drawing.Point(6, 176);
-            this.movieContainer1.Movie = null;
-            this.movieContainer1.MovieList = null;
-            this.movieContainer1.Name = "movieContainer1";
-            this.movieContainer1.Size = new System.Drawing.Size(913, 375);
-            this.movieContainer1.TabIndex = 2;
-            // 
-            // lbl_p4_status
-            // 
-            this.lbl_p4_status.AutoSize = true;
-            this.lbl_p4_status.Location = new System.Drawing.Point(330, 13);
-            this.lbl_p4_status.Name = "lbl_p4_status";
-            this.lbl_p4_status.Size = new System.Drawing.Size(77, 12);
-            this.lbl_p4_status.TabIndex = 7;
-            this.lbl_p4_status.Text = "正在搜索……";
-            this.lbl_p4_status.Visible = false;
             // 
             // Form1
             // 

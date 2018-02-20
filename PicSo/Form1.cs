@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace PicSo
 {
@@ -57,38 +58,6 @@ namespace PicSo
 
             }
         }
-
-        //void Go()
-        //{
-        //    try
-        //    {
-        //        for (int i = 0; i < this.listView1.Items.Count; i++)
-        //        {
-        //            this.listView1.Items[i].SubItems.Add("查询品番...");
-        //            var mbs = arzon.Query(this.listView1.Items[i].SubItems[1].Text);
-        //            if (mbs.Count == 1)
-        //            {
-        //                this.bc.MovieB = mbs[0];
-        //                this.listView1.Items[i].SubItems[2].Text = "下载封面...";
-        //                var mv = arzon.GetMovie(this.bc.MovieB);
-        //                arzon.GetCover(mv);
-        //                this.listView1.Items[i].SubItems[2].Text = "完成";
-
-        //                f.MakeMove(mv, listView1.Items[i].Text);
-
-        //            }
-        //            else
-        //            {
-        //                this.listView1.Items[i].SubItems[2].Text = "未找到";
-        //            }
-        //        }
-        //    }
-        //    finally
-        //    {
-        //        f.WriteLog();
-        //    }
-
-        //}
 
 
         private void textBox2_TextChanged(object sender, EventArgs e)
@@ -144,12 +113,15 @@ namespace PicSo
             }
         }
 
+        Semaphore sem = new Semaphore(2, 2);
+
         private void btn_GO_Click(object sender, EventArgs e)
         {
             foreach (ListViewItem item in listView1.Items)
             {
+                sem.WaitOne();//现在这个Semaphore是可以正常工作的。但是放在这里会阻塞主进程，弄2个semaphore，再弄2个事件。在SearchItem里专门控制
+                //下载信息的进程，以及下载图片的进程数量，是比较好的方法。
                 var fi = new AVSORTER.SearchItem(item.SubItems[1].Text, arzon.Clone() as AVSORTER.IGetable);
-
                 item.Tag = fi;
                 fi.OnStatusChange += fi_OnStatusChange;
                 fi.Tag = item;
@@ -162,9 +134,10 @@ namespace PicSo
         void fi_OnStatusChange(object sender, AVSORTER.SearchItem.StatusChangeEventArgs e)
         {
             ((sender as AVSORTER.SearchItem).Tag as ListViewItem).SubItems[2].Text = e.After.ToString();
-
-
-
+            if (e.Message=="Release1")
+            {
+                sem.Release();
+            }
         }
 
         private void UIParamChange(object sender, EventArgs e)
@@ -381,9 +354,6 @@ namespace PicSo
                     {
                         item.SubItems[2].Text = "未动";
                     }
-
-
-
                 }
                 else
                 {

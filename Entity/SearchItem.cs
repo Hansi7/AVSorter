@@ -202,6 +202,7 @@ namespace AVSORTER
                 //this.MovieBasicList = Getor.Query(SeedString);
                 Func<string, List<MovieBasic>> fuc = new Func<string, List<MovieBasic>>(Getor.Query);
                 fuc.BeginInvoke(SeedString, queryFinishCallBack, fuc);
+
                 RaiseStatusChangeEvent(QStatus.未开始, QStatus.查询中, "");
             }
             else
@@ -238,6 +239,10 @@ namespace AVSORTER
                 RaiseStatusChangeEvent(QStatus.查询中, QStatus.出错, "查询出错");
                 this.MovieBasicList = null;
                 this.chooseIndex = -1;
+            }
+            finally
+            {
+                RaiseStatusChangeEvent(QStatus.准备好移动文件, QStatus.准备好移动文件, "Release1");
             }
 
         }

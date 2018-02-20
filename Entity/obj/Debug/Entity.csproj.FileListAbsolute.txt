@@ -55,3 +55,11 @@ D:\avsorter\Entity\obj\Debug\AVSORTER.Properties.Resources.resources
 D:\avsorter\Entity\obj\Debug\Entity.dll
 D:\avsorter\Entity\obj\Debug\Entity.pdb
 D:\avsorter\Entity\obj\Debug\Entity.csproj.GenerateResource.Cache
+E:\AVSorter\Entity\bin\Debug\DB\AVDB.accdb
+E:\AVSorter\Entity\bin\Debug\Entity.dll
+E:\AVSorter\Entity\bin\Debug\Entity.pdb
+E:\AVSorter\Entity\obj\Debug\Entity.csprojResolveAssemblyReference.cache
+E:\AVSorter\Entity\obj\Debug\AVSORTER.Properties.Resources.resources
+E:\AVSorter\Entity\obj\Debug\Entity.csproj.GenerateResource.Cache
+E:\AVSorter\Entity\obj\Debug\Entity.dll
+E:\AVSorter\Entity\obj\Debug\Entity.pdb

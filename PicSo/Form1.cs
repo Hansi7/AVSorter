@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
+using AVSORTER;
 
 namespace PicSo
 {
@@ -157,11 +158,10 @@ namespace PicSo
             {
                 i++;
                 AVSORTER.IGetable getor = arzon.Clone() as AVSORTER.IGetable;
-                tasks[i]= new Task<List<AVSORTER.MovieBasic>>(() => {
+                tasks[i] = new Task<List<AVSORTER.MovieBasic>>(() =>
+                {
                     return getor.Query(item.SubItems[1].Text);
                 }, token);
-
-
 
                 tasks[i].ContinueWith<AVSORTER.Movie>((mbasics) =>
                 {
@@ -180,7 +180,7 @@ namespace PicSo
             }
 
 
-        } 
+        }
 
 
 
@@ -216,21 +216,15 @@ namespace PicSo
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            return;
+
             if (listView1.SelectedItems.Count == 1)
             {
                 if (listView1.SelectedItems[0].Tag != null)
                 {
-                    var si = (listView1.SelectedItems[0].Tag as AVSORTER.SearchItem);
+                    var si = (listView1.SelectedItems[0].Tag as ResultArzon);
 
-                    this.bc.ListMovieBasic = si.MovieBasicList;
-                    if (si.IsSelected)
-                    {
-                        this.bc.MovieB = si.SelectedMovieBasic;
-                    }
-                    else if (si.MovieBasicList != null && si.MovieBasicList.Count != 0)
-                    {
-                        this.bc.MovieB = si.MovieBasicList[0];
-                    }
+
                 }
 
             }
@@ -238,6 +232,11 @@ namespace PicSo
 
         private void btn_select_Click(object sender, EventArgs e)
         {
+
+            MessageBox.Show("不需要了");
+            return;
+
+
             if (listView1.SelectedItems.Count == 1)
             {
                 if (listView1.SelectedItems[0].Tag != null)
@@ -256,24 +255,15 @@ namespace PicSo
                 initFileProcessor();
                 foreach (ListViewItem item in listView1.Items)
                 {
-                    if ((item.Tag as AVSORTER.SearchItem).IsSelected == true)
+
+                    if (item.Text != "No File")
                     {
-                        if (item.Text != "No File")
-                        {
-                            AVSORTER.FileProcessor.GetInstance().MakeMove((item.Tag as AVSORTER.SearchItem).MovieDetail, item.Text);
-                            item.SubItems[2].Text = "移动成功！";
-                        }
-                        else
-                        {
-                            item.SubItems[2].Text = "未移动";
-                        }
-
-
-
+                        AVSORTER.FileProcessor.GetInstance().MakeMove((item.Tag as AVSORTER.ResultArzon).Movie, item.Text);
+                        item.SubItems[2].Text = "移动成功！";
                     }
                     else
                     {
-                        item.SubItems[2].Text = "未指定对应影片信息";
+                        item.SubItems[2].Text = "未移动";
                     }
 
                 }
@@ -366,7 +356,8 @@ namespace PicSo
         {
             if (this.listView1.SelectedItems.Count > 0)
             {
-                var d = (listView1.SelectedItems[0].Tag as AVSORTER.SearchItem).MovieDetail;
+                var d = (listView1.SelectedItems[0].Tag as ResultArzon).Movie;
+
                 if (d != null)
                 {
                     System.Diagnostics.Process.Start(d.CoverFile);
@@ -395,19 +386,34 @@ namespace PicSo
 
         private void listView1_DoubleClick(object sender, EventArgs e)
         {
-            if (this.listView1.SelectedItems.Count > 0)
-            {
-                var d = (listView1.SelectedItems[0].Tag as AVSORTER.SearchItem);
-                if (d.MovieDetail != null && d != null && !string.IsNullOrEmpty(d.MovieDetail.CoverFile))
+            try
+            { 
+
+
+                if (this.listView1.SelectedItems.Count > 0)
                 {
-                    System.Diagnostics.Process.Start(d.MovieDetail.CoverFile);
+                    var d = (listView1.SelectedItems[0].Tag as ResultArzon);
+
+                    Console.WriteLine(d.Movie);
+
+
+                    if (d.Movie != null && d != null && !string.IsNullOrEmpty(d.Movie.CoverFile))
+                    {
+                        System.Diagnostics.Process.Start(d.Movie.CoverFile);
+                    }
                 }
+            }
+            catch (Exception ees)
+            {
+                MessageBox.Show(ees.Message);
             }
         }
 
 
         private void btn_rebuild_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("未实现");
+            return;
             this.btn_MoveFile.Enabled = false;
             initFileProcessor();
             foreach (ListViewItem item in listView1.Items)
@@ -467,10 +473,15 @@ namespace PicSo
         }
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+
             if (this.listBox1.SelectedItems.Count > 0)
             {
                 this.movieContainer1.Movie = (this.listBox1.SelectedItem as AVSORTER.Movie);
             }
+
+
+
         }
         #endregion
 
@@ -618,13 +629,13 @@ namespace PicSo
 
         void workerP4_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            
+
         }
         private void cmenu_p4_item_copy_Click(object sender, EventArgs e)
         {
-            if (lv_p4_result.SelectedItems.Count==1)
+            if (lv_p4_result.SelectedItems.Count == 1)
             {
-                var link=  lv_p4_result.SelectedItems[0].SubItems[2].Text;
+                var link = lv_p4_result.SelectedItems[0].SubItems[2].Text;
 
                 Clipboard.SetText(link);
 
@@ -643,17 +654,37 @@ namespace PicSo
             }
         }
         #endregion
+        SearchController currentSearchController;
+        private void button1_Click(object sender, EventArgs e)
+        {
 
+            List<string> l = new List<string>();
 
+            foreach (ListViewItem item in listView1.Items)
+            {
+                l.Add(item.SubItems[1].Text);
+            }
+            SearchController sc = new SearchController(arzon, l);
 
+            currentSearchController = sc;
 
+            sc.OnStatusChange += Sc_OnStatusChange;
 
+            sc.MainDo(1);
 
+        }
 
-
-
-
-
+        private void Sc_OnStatusChange(object sender, SearchController.StatusChangeEventArgs e)
+        {
+            foreach (ListViewItem item in listView1.Items)
+            {
+                if (item.SubItems[1].Text == e.Ra.Code)
+                {
+                    item.SubItems[2].Text = e.Ra.QStatus.ToString();
+                    item.Tag = e.Ra;
+                }
+            }
+        }
     }
 
 

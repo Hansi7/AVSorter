@@ -80,6 +80,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchController.cs" />
     <EmbeddedResource Include="BasicContainer.resx">
       <DependentUpon>BasicContainer.cs</DependentUpon>
     </EmbeddedResource>

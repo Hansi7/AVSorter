@@ -10,7 +10,7 @@ namespace AVSORTER
     {
         #region 构造函数 public FileItem(string codeString,IGetable getor)
 
-        public SearchItem(string codeString,IGetable getor)
+        public SearchItem(string codeString, IGetable getor)
         {
             this._queryString = codeString;
             this.Getor = getor;
@@ -20,9 +20,6 @@ namespace AVSORTER
         #region 属性 查询字符串public string SeedString
 
         private string _queryString;
-        /// <summary>
-        /// 查询的字符串
-        /// </summary>
         public string SeedString
         {
             get { return _queryString; }
@@ -35,9 +32,10 @@ namespace AVSORTER
         public Movie MovieDetail
         {
             get { return _mv; }
+
         }
         #endregion
-        
+
         /// <summary>
         /// 结果列表
         /// </summary>
@@ -66,7 +64,7 @@ namespace AVSORTER
         {
             get
             {
-                if (this.chooseIndex==-1)
+                if (this.chooseIndex == -1)
                 {
                     return false;
                 }
@@ -128,13 +126,12 @@ namespace AVSORTER
             }
             catch (Exception ee)
             {
-                
+
                 throw ee;
             }
         }
         private void _getMovieCallback(IAsyncResult res)
         {
-
 
             try
             {
@@ -169,7 +166,7 @@ namespace AVSORTER
                     OnCompletedLoadImage(this, new EventArgs());
                 }
             }
-            
+
         }
 
         private void _startGetCover()
@@ -196,12 +193,12 @@ namespace AVSORTER
 
         }
 
-        virtual protected void RaiseStatusChangeEvent(QStatus b,QStatus aft,string msg)
+        virtual protected void RaiseStatusChangeEvent(QStatus b, QStatus aft, string msg)
         {
             this._status = aft;
-            if (OnStatusChange!=null)
+            if (OnStatusChange != null)
             {
-                OnStatusChange(this,new StatusChangeEventArgs(b,aft,msg));
+                OnStatusChange(this, new StatusChangeEventArgs(b, aft, msg));
             }
         }
 
@@ -217,17 +214,17 @@ namespace AVSORTER
 
         public void StartQuery()
         {
-            if (OnAboutToLoadInfo==null)
+            if (OnAboutToLoadInfo == null)
             {
                 throw new Exception("必须注册这个事件");
             }
             else
             {
-                OnAboutToLoadInfo(this, new EventArgs());
+				OnAboutToLoadInfo(this, new EventArgs());
             }
 
 
-            if (this.Getor!=null)
+            if (this.Getor != null)
             {
                 //this.MovieBasicList = Getor.Query(SeedString);
                 Func<string, List<MovieBasic>> fuc = new Func<string, List<MovieBasic>>(Getor.Query);
@@ -288,7 +285,7 @@ namespace AVSORTER
             public QStatus Before { get; set; }
             public QStatus After { get; set; }
             public string Message { get; set; }
-            public StatusChangeEventArgs(QStatus _before, QStatus _after,string _msg)
+            public StatusChangeEventArgs(QStatus _before, QStatus _after, string _msg)
             {
                 this.Before = _before;
                 this.After = _after;

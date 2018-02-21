@@ -60,14 +60,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txt_sub = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.bc = new AVSORTER.BasicContainer();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.cb_AutoCorrect = new System.Windows.Forms.CheckBox();
             this.btn_LocalSearch = new System.Windows.Forms.Button();
             this.txt_LocalSearchKeyWord = new System.Windows.Forms.TextBox();
-            this.movieContainer1 = new PicSo.MovieContainer();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.label3 = new System.Windows.Forms.Label();
             this.nud_ActorLessThan = new System.Windows.Forms.NumericUpDown();
@@ -87,6 +85,9 @@
             this.btn_p4_Go1 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.txt_p4_keyword = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.bc = new AVSORTER.BasicContainer();
+            this.movieContainer1 = new PicSo.MovieContainer();
             this.contextMenuStrip1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -175,6 +176,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.button1);
             this.groupBox2.Controls.Add(this.btn_paste_new);
             this.groupBox2.Controls.Add(this.btn_AddNewEmptyItem);
             this.groupBox2.Controls.Add(this.txt_EmptyItemKeyWord);
@@ -404,18 +406,6 @@
             this.label1.TabIndex = 12;
             this.label1.Text = "目标路径";
             // 
-            // bc
-            // 
-            this.bc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.bc.IsShowPic = false;
-            this.bc.ListMovieBasic = null;
-            this.bc.Location = new System.Drawing.Point(6, 341);
-            this.bc.MovieB = null;
-            this.bc.Name = "bc";
-            this.bc.Size = new System.Drawing.Size(411, 180);
-            this.bc.TabIndex = 7;
-            this.bc.Load += new System.EventHandler(this.bc_Load);
-            // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
@@ -482,16 +472,6 @@
             this.txt_LocalSearchKeyWord.Size = new System.Drawing.Size(219, 21);
             this.txt_LocalSearchKeyWord.TabIndex = 0;
             this.txt_LocalSearchKeyWord.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_LocalSearchKeyWord_KeyPress);
-            // 
-            // movieContainer1
-            // 
-            this.movieContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.movieContainer1.Location = new System.Drawing.Point(6, 176);
-            this.movieContainer1.Movie = null;
-            this.movieContainer1.MovieList = null;
-            this.movieContainer1.Name = "movieContainer1";
-            this.movieContainer1.Size = new System.Drawing.Size(913, 375);
-            this.movieContainer1.TabIndex = 2;
             // 
             // tabPage3
             // 
@@ -672,6 +652,38 @@
             this.txt_p4_keyword.Size = new System.Drawing.Size(100, 21);
             this.txt_p4_keyword.TabIndex = 0;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(648, 20);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(110, 50);
+            this.button1.TabIndex = 21;
+            this.button1.Text = "CPUs";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // bc
+            // 
+            this.bc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.bc.IsShowPic = false;
+            this.bc.ListMovieBasic = null;
+            this.bc.Location = new System.Drawing.Point(6, 341);
+            this.bc.MovieB = null;
+            this.bc.Name = "bc";
+            this.bc.Size = new System.Drawing.Size(411, 180);
+            this.bc.TabIndex = 7;
+            this.bc.Load += new System.EventHandler(this.bc_Load);
+            // 
+            // movieContainer1
+            // 
+            this.movieContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.movieContainer1.Location = new System.Drawing.Point(6, 176);
+            this.movieContainer1.Movie = null;
+            this.movieContainer1.MovieList = null;
+            this.movieContainer1.Name = "movieContainer1";
+            this.movieContainer1.Size = new System.Drawing.Size(913, 375);
+            this.movieContainer1.TabIndex = 2;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -764,6 +776,7 @@
         private System.Windows.Forms.Button btn_paste_new;
         private System.Windows.Forms.Button btn_p4_Go1_paste;
         private System.Windows.Forms.Label lbl_p4_status;
+        private System.Windows.Forms.Button button1;
     }
 }
 

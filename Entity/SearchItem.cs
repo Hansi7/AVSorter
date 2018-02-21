@@ -112,8 +112,6 @@ namespace AVSORTER
                 OnAboutToLoadImage(this, new EventArgs());
             }
 
-
-
             try
             {
                 if (this.chooseIndex != -1)

@@ -118,6 +118,11 @@ namespace PicSo
 
         private void btn_GO_Click(object sender, EventArgs e)
         {
+            //newGOGOGO();
+            //return;
+
+
+
             foreach (ListViewItem item in listView1.Items)
             {
                 var fi = new AVSORTER.SearchItem(item.SubItems[1].Text, arzon.Clone() as AVSORTER.IGetable);
@@ -138,6 +143,47 @@ namespace PicSo
                 fi.StartQuery();
             }
         }
+        private void newGOGOGO()
+        {
+
+            CancellationTokenSource tokenSource = new CancellationTokenSource();
+            CancellationToken token = tokenSource.Token;
+
+
+            Task<List<AVSORTER.MovieBasic>>[] tasks = new Task<List<AVSORTER.MovieBasic>>[listView1.Items.Count];
+            int i = -1;
+
+            foreach (ListViewItem item in listView1.Items)
+            {
+                i++;
+                AVSORTER.IGetable getor = arzon.Clone() as AVSORTER.IGetable;
+                tasks[i]= new Task<List<AVSORTER.MovieBasic>>(() => {
+                    return getor.Query(item.SubItems[1].Text);
+                }, token);
+
+
+
+                tasks[i].ContinueWith<AVSORTER.Movie>((mbasics) =>
+                {
+                    if (mbasics.Result.Count == 1)
+                    {
+                        return getor.GetMovie(mbasics.Result[0]);
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                });
+
+                tasks[i].Start();
+
+            }
+
+
+        } 
+
+
+
 
         private void Fi_OnAboutToLoadImage(object sender, EventArgs e)
         {

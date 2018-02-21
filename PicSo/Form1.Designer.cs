@@ -165,7 +165,7 @@
             // 
             // btn_rebuild
             // 
-            this.btn_rebuild.Location = new System.Drawing.Point(681, 461);
+            this.btn_rebuild.Location = new System.Drawing.Point(681, 342);
             this.btn_rebuild.Name = "btn_rebuild";
             this.btn_rebuild.Size = new System.Drawing.Size(119, 60);
             this.btn_rebuild.TabIndex = 20;
@@ -323,9 +323,9 @@
             // 
             this.btn_select.Location = new System.Drawing.Point(423, 341);
             this.btn_select.Name = "btn_select";
-            this.btn_select.Size = new System.Drawing.Size(159, 63);
+            this.btn_select.Size = new System.Drawing.Size(147, 27);
             this.btn_select.TabIndex = 24;
-            this.btn_select.Text = "设置对应关系至选定的项目";
+            this.btn_select.Text = "将左侧选定为确定结果";
             this.btn_select.UseVisualStyleBackColor = true;
             this.btn_select.Click += new System.EventHandler(this.btn_select_Click);
             // 
@@ -339,7 +339,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(423, 410);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(252, 111);
+            this.groupBox1.Size = new System.Drawing.Size(377, 111);
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "文件移动设置";
@@ -347,7 +347,7 @@
             // 
             // btn_MoveFile
             // 
-            this.btn_MoveFile.Location = new System.Drawing.Point(137, 78);
+            this.btn_MoveFile.Location = new System.Drawing.Point(272, 74);
             this.btn_MoveFile.Name = "btn_MoveFile";
             this.btn_MoveFile.Size = new System.Drawing.Size(99, 23);
             this.btn_MoveFile.TabIndex = 25;
@@ -372,7 +372,7 @@
             // 
             this.txt_Dest.Location = new System.Drawing.Point(75, 20);
             this.txt_Dest.Name = "txt_Dest";
-            this.txt_Dest.Size = new System.Drawing.Size(161, 21);
+            this.txt_Dest.Size = new System.Drawing.Size(296, 21);
             this.txt_Dest.TabIndex = 9;
             this.txt_Dest.Leave += new System.EventHandler(this.UIParamChange);
             // 
@@ -389,7 +389,7 @@
             // 
             this.txt_sub.Location = new System.Drawing.Point(75, 47);
             this.txt_sub.Name = "txt_sub";
-            this.txt_sub.Size = new System.Drawing.Size(161, 21);
+            this.txt_sub.Size = new System.Drawing.Size(296, 21);
             this.txt_sub.TabIndex = 8;
             this.txt_sub.Text = "演员\\[番号]标题";
             this.txt_sub.TextChanged += new System.EventHandler(this.textBox2_TextChanged);

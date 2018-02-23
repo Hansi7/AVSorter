@@ -52,7 +52,7 @@ namespace PicSo
             ra.QStatus = QStatus.查询完成;
             RaiseStatusChangeEvent(ra);
 
-            if (mb_list.Count<4)
+            if (mb_list.Count<5)
             {
                 ra.QStatus = QStatus.获取信息中;
                 RaiseStatusChangeEvent(ra);
@@ -66,6 +66,12 @@ namespace PicSo
                         ra.Movie = m;
                         break;
                     }
+                }
+                if (ra.Movie==null)
+                {
+                    ra.QStatus = QStatus.查询完成无匹配;
+                    RaiseStatusChangeEvent(ra);
+                    return;
                 }
                 ra.QStatus = QStatus.下载封面中;
                 RaiseStatusChangeEvent(ra);

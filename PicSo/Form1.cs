@@ -34,7 +34,8 @@ namespace PicSo
 
         void arzon_InitCompleted(object sender, EventArgs e)
         {
-            lbl_YouMaStatus.BackColor = Color.Green;
+            sl_Network.Text = "网络OK！";
+            sl_Network.BackColor = Color.Green;
         }
 
         Gets.Arzon arzon;
@@ -117,73 +118,6 @@ namespace PicSo
         Semaphore sem1_bmovie = new Semaphore(2, 2);
         Semaphore sem2_movie = new Semaphore(2, 2);
 
-        private void btn_GO_Click(object sender, EventArgs e)
-        {
-            //newGOGOGO();
-            //return;
-
-
-
-            foreach (ListViewItem item in listView1.Items)
-            {
-                var fi = new AVSORTER.SearchItem(item.SubItems[1].Text, arzon.Clone() as AVSORTER.IGetable);
-                item.Tag = fi;
-                fi.OnStatusChange += fi_OnStatusChange;
-                fi.Tag = item;
-                fi.IsAutoSelect = cb_AutoSelect.Checked;
-                fi.IsDownloadCover = cb_isCoverDownload.Checked;
-                //等一个许可信号
-                fi.OnAboutToLoadInfo += Fi_OnAboutToLoadInfo;
-                //释放放一个许可
-                fi.OnCompletedLoadInfo += Fi_OnCompletedLoadInfo;
-
-                fi.OnAboutToLoadImage += Fi_OnAboutToLoadImage;
-
-                fi.OnCompletedLoadImage += Fi_OnCompletedLoadImage;
-
-                fi.StartQuery();
-            }
-        }
-        private void newGOGOGO()
-        {
-
-            CancellationTokenSource tokenSource = new CancellationTokenSource();
-            CancellationToken token = tokenSource.Token;
-
-
-            Task<List<AVSORTER.MovieBasic>>[] tasks = new Task<List<AVSORTER.MovieBasic>>[listView1.Items.Count];
-            int i = -1;
-
-            foreach (ListViewItem item in listView1.Items)
-            {
-                i++;
-                AVSORTER.IGetable getor = arzon.Clone() as AVSORTER.IGetable;
-                tasks[i] = new Task<List<AVSORTER.MovieBasic>>(() =>
-                {
-                    return getor.Query(item.SubItems[1].Text);
-                }, token);
-
-                tasks[i].ContinueWith<AVSORTER.Movie>((mbasics) =>
-                {
-                    if (mbasics.Result.Count == 1)
-                    {
-                        return getor.GetMovie(mbasics.Result[0]);
-                    }
-                    else
-                    {
-                        return null;
-                    }
-                });
-
-                tasks[i].Start();
-
-            }
-
-
-        }
-
-
-
 
         private void Fi_OnAboutToLoadImage(object sender, EventArgs e)
         {
@@ -204,10 +138,6 @@ namespace PicSo
             sem1_bmovie.WaitOne();
         }
 
-        void fi_OnStatusChange(object sender, AVSORTER.SearchItem.StatusChangeEventArgs e)
-        {
-            ((sender as AVSORTER.SearchItem).Tag as ListViewItem).SubItems[2].Text = e.After.ToString();
-        }
 
         private void UIParamChange(object sender, EventArgs e)
         {
@@ -230,22 +160,6 @@ namespace PicSo
             }
         }
 
-        private void btn_select_Click(object sender, EventArgs e)
-        {
-
-            MessageBox.Show("不需要了");
-            return;
-
-
-            if (listView1.SelectedItems.Count == 1)
-            {
-                if (listView1.SelectedItems[0].Tag != null)
-                {
-                    (listView1.SelectedItems[0].Tag as AVSORTER.SearchItem).Select(this.bc.MovieB);
-                }
-
-            }
-        }
 
         private void btn_MoveFile_Click(object sender, EventArgs e)
         {
@@ -367,20 +281,23 @@ namespace PicSo
 
         private void btn_AddNewEmptyItem_Click(object sender, EventArgs e)
         {
-
-            var li = new ListViewItem("No File");
-            li.SubItems.Add(AVSORTER.Tools.Fcode(this.txt_EmptyItemKeyWord.Text));
-            li.SubItems.Add("");
-
-            this.listView1.Items.Add(li);
-
+            InputBox inp = new InputBox();
+            if (inp.ShowDialog() == DialogResult.OK)
+            {
+                var li = new ListViewItem("No File");
+                li.SubItems.Add(AVSORTER.Tools.Fcode(inp.InputText));
+                li.SubItems.Add(QStatus.未开始.ToString());
+                this.listView1.Items.Add(li);
+            }
         }
         private void btn_paste_new_Click(object sender, EventArgs e)
         {
             if (Clipboard.ContainsText())
             {
-                txt_EmptyItemKeyWord.Text = Clipboard.GetText();
-                btn_AddNewEmptyItem_Click(this, new EventArgs());
+                var li = new ListViewItem("No File");
+                li.SubItems.Add(AVSORTER.Tools.Fcode(Clipboard.GetText()));
+                li.SubItems.Add(QStatus.未开始.ToString());
+                this.listView1.Items.Add(li);
             }
         }
 
@@ -410,31 +327,23 @@ namespace PicSo
         }
 
 
-        private void btn_rebuild_Click(object sender, EventArgs e)
+        private void rebuildDatabase()
         {
             MessageBox.Show("未实现");
             return;
-            this.btn_MoveFile.Enabled = false;
             initFileProcessor();
             foreach (ListViewItem item in listView1.Items)
             {
-                if ((item.Tag as AVSORTER.SearchItem).IsSelected == true)
+
+                if (item.Text != "No File")
                 {
-                    if (item.Text != "No File")
-                    {
-                        AVSORTER.FileProcessor.GetInstance().MakeDataBase((item.Tag as AVSORTER.SearchItem).MovieDetail, item.Text);
-                        item.SubItems[2].Text = "成功！";
-                    }
-                    else
-                    {
-                        item.SubItems[2].Text = "未动";
-                    }
+                    AVSORTER.FileProcessor.GetInstance().MakeDataBase((item.Tag as AVSORTER.ResultArzon).Movie, item.Text);
+                    item.SubItems[2].Text = "成功！";
                 }
                 else
                 {
-                    item.SubItems[2].Text = "未指定对应影片信息";
+                    item.SubItems[2].Text = "未动";
                 }
-
             }
             AVSORTER.FileProcessor.GetInstance().WriteLog();
             this.btn_MoveFile.Enabled = true;
@@ -488,172 +397,172 @@ namespace PicSo
         #region Page3
 
 
-        private void btnFind_Click(object sender, EventArgs e)
-        {
-            BackgroundWorker worker = new BackgroundWorker();
-            worker.WorkerReportsProgress = true;
-            worker.ProgressChanged += worker_ProgressChanged;
-            worker.DoWork += worker_DoWork;
-            worker.RunWorkerCompleted += worker_RunWorkerCompleted;
-            worker.RunWorkerAsync(worker);
-        }
+        //private void btnFind_Click(object sender, EventArgs e)
+        //{
+        //    BackgroundWorker worker = new BackgroundWorker();
+        //    worker.WorkerReportsProgress = true;
+        //    worker.ProgressChanged += worker_ProgressChanged;
+        //    worker.DoWork += worker_DoWork;
+        //    worker.RunWorkerCompleted += worker_RunWorkerCompleted;
+        //    worker.RunWorkerAsync(worker);
+        //}
 
-        void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            //throw new NotImplementedException();
-        }
+        //void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
-        void worker_DoWork(object sender, DoWorkEventArgs e)
-        {
-            var worker = (e.Argument as BackgroundWorker);
-            List<AVSORTER.Movie> list = new List<AVSORTER.Movie>();
-            var mvbs = arzon.FindInURL(txt_url.Text);
-            worker.ReportProgress(0, "共找到影片:" + mvbs.Count.ToString());
-            int no = 0;
-            int totalNo = mvbs.Count;
-            foreach (var mvb in mvbs)
-            {
-                var fi = arzon.Clone() as AVSORTER.IGetable;
-                var mv = fi.GetMovie(mvb);
-                no++;
-                worker.ReportProgress(0, no.ToString() + "/" + totalNo.ToString());
-                worker.ReportProgress(0, mv.AVCode + "\t" + mv.Title);
-                if (mv.Actor != null && mv.Actor.Count <= nud_ActorLessThan.Value)
-                {
-                    Gets.MyWebClient wc = new Gets.MyWebClient();
-                    wc.ReferURL = mvb.ItemURL;
-                    string fn = mvb.Title + ".jpg";
-                    fn = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SmallImageFindInURL", Path.ChangeExtension(fn, "jpg"));
-                    try
-                    {
-                        if (!Directory.Exists(Path.GetDirectoryName(fn)))
-                        {
-                            Directory.CreateDirectory(Path.GetDirectoryName(fn));
-                        }
-                        if (!File.Exists(fn))
-                        {
-                            wc.DownloadFile(mvb.Img_s, fn);
-                        }
-                        else
-                        {
-                            Console.WriteLine("已有封面" + fn);
-                        }
-                        worker.ReportProgress(0, mv.AVCode + "\t封面OK!");
+        //void worker_DoWork(object sender, DoWorkEventArgs e)
+        //{
+        //    var worker = (e.Argument as BackgroundWorker);
+        //    List<AVSORTER.Movie> list = new List<AVSORTER.Movie>();
+        //    var mvbs = arzon.FindInURL(txt_url.Text);
+        //    worker.ReportProgress(0, "共找到影片:" + mvbs.Count.ToString());
+        //    int no = 0;
+        //    int totalNo = mvbs.Count;
+        //    foreach (var mvb in mvbs)
+        //    {
+        //        var fi = arzon.Clone() as AVSORTER.IGetable;
+        //        var mv = fi.GetMovie(mvb);
+        //        no++;
+        //        worker.ReportProgress(0, no.ToString() + "/" + totalNo.ToString());
+        //        worker.ReportProgress(0, mv.AVCode + "\t" + mv.Title);
+        //        if (mv.Actor != null && mv.Actor.Count <= nud_ActorLessThan.Value)
+        //        {
+        //            Gets.MyWebClient wc = new Gets.MyWebClient();
+        //            wc.ReferURL = mvb.ItemURL;
+        //            string fn = mvb.Title + ".jpg";
+        //            fn = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SmallImageFindInURL", Path.ChangeExtension(fn, "jpg"));
+        //            try
+        //            {
+        //                if (!Directory.Exists(Path.GetDirectoryName(fn)))
+        //                {
+        //                    Directory.CreateDirectory(Path.GetDirectoryName(fn));
+        //                }
+        //                if (!File.Exists(fn))
+        //                {
+        //                    wc.DownloadFile(mvb.Img_s, fn);
+        //                }
+        //                else
+        //                {
+        //                    Console.WriteLine("已有封面" + fn);
+        //                }
+        //                worker.ReportProgress(0, mv.AVCode + "\t封面OK!");
 
-                    }
-                    catch
-                    { }
-                    mv.CoverFile = fn;
-                    list.Add(mv);
-                }
-                else
-                {
-                    worker.ReportProgress(0, mv.AVCode + "\t演员人数超限制\t" + mv.Title);
-                }
-            }
-            StringBuilder sb = new StringBuilder();
-            foreach (AVSORTER.Movie item in list)
-            {
-                sb.Append("<div id = \"" + item.AVCode + "\" class = \"item\"><img src = \"" + item.CoverFile + "\" /><input type=\"checkbox\" />" + item.AVCode + "</div>");
-            }
-            var htmlResult = Properties.Resources.htmlResultStart + sb + Properties.Resources.htmlResultEnd;
-            System.IO.File.WriteAllText("temp.html", htmlResult);
-            System.Diagnostics.Process.Start("temp.html");
-        }
+        //            }
+        //            catch
+        //            { }
+        //            mv.CoverFile = fn;
+        //            list.Add(mv);
+        //        }
+        //        else
+        //        {
+        //            worker.ReportProgress(0, mv.AVCode + "\t演员人数超限制\t" + mv.Title);
+        //        }
+        //    }
+        //    StringBuilder sb = new StringBuilder();
+        //    foreach (AVSORTER.Movie item in list)
+        //    {
+        //        sb.Append("<div id = \"" + item.AVCode + "\" class = \"item\"><img src = \"" + item.CoverFile + "\" /><input type=\"checkbox\" />" + item.AVCode + "</div>");
+        //    }
+        //    var htmlResult = Properties.Resources.htmlResultStart + sb + Properties.Resources.htmlResultEnd;
+        //    System.IO.File.WriteAllText("temp.html", htmlResult);
+        //    System.Diagnostics.Process.Start("temp.html");
+        //}
 
-        void worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-            if (e.ProgressPercentage == 0)
-            {
-                txt_FindStatus.AppendText(e.UserState as string + "\r\n");
-            }
-        }
+        //void worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        //{
+        //    if (e.ProgressPercentage == 0)
+        //    {
+        //        txt_FindStatus.AppendText(e.UserState as string + "\r\n");
+        //    }
+        //}
 
         #endregion
 
 
-        #region Page4
-        private void btn_p4_Go1_Click(object sender, EventArgs e)
-        {
-            lbl_p4_status.Visible = true;
-            btn_p4_Go1.Enabled = false;
-            btn_p4_Go1_paste.Enabled = false;
+        //#region Page4
+        //private void btn_p4_Go1_Click(object sender, EventArgs e)
+        //{
+        //    lbl_p4_status.Visible = true;
+        //    btn_p4_Go1.Enabled = false;
+        //    btn_p4_Go1_paste.Enabled = false;
 
 
-            BackgroundWorker workerP4 = new BackgroundWorker();
-            workerP4.WorkerReportsProgress = true;
-            workerP4.ProgressChanged += workerP4_ProgressChanged;
-            workerP4.DoWork += workerP4_DoWork;
-            workerP4.RunWorkerCompleted += workerP4_RunWorkerCompleted;
-            workerP4.RunWorkerAsync();
+        //    BackgroundWorker workerP4 = new BackgroundWorker();
+        //    workerP4.WorkerReportsProgress = true;
+        //    workerP4.ProgressChanged += workerP4_ProgressChanged;
+        //    workerP4.DoWork += workerP4_DoWork;
+        //    workerP4.RunWorkerCompleted += workerP4_RunWorkerCompleted;
+        //    workerP4.RunWorkerAsync();
 
-        }
-        void workerP4_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            lbl_p4_status.Visible = false;
-            btn_p4_Go1.Enabled = true;
-            btn_p4_Go1_paste.Enabled = true;
-        }
-        /// <summary>
-        /// torrentKitty
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        void workerP4_DoWork(object sender, DoWorkEventArgs e)
-        {
-            Gets.HttpHelper help = new Gets.HttpHelper(new System.Net.CookieContainer());
-            var html = help.GetHtml("http://www.torrentkitty.net/search/" + txt_p4_keyword.Text.Trim());
-            Console.WriteLine(html);
-            HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
-            doc.LoadHtml(html);
+        //}
+        //void workerP4_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        //{
+        //    lbl_p4_status.Visible = false;
+        //    btn_p4_Go1.Enabled = true;
+        //    btn_p4_Go1_paste.Enabled = true;
+        //}
+        ///// <summary>
+        ///// torrentKitty
+        ///// </summary>
+        ///// <param name="sender"></param>
+        ///// <param name="e"></param>
+        //void workerP4_DoWork(object sender, DoWorkEventArgs e)
+        //{
+        //    Gets.HttpHelper help = new Gets.HttpHelper(new System.Net.CookieContainer());
+        //    var html = help.GetHtml("http://www.torrentkitty.net/search/" + txt_p4_keyword.Text.Trim());
+        //    Console.WriteLine(html);
+        //    HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
+        //    doc.LoadHtml(html);
 
-            if (doc.DocumentNode.SelectNodes("//table[@id='archiveResult']/tr") == null)
-            {
-                return;
-            }
+        //    if (doc.DocumentNode.SelectNodes("//table[@id='archiveResult']/tr") == null)
+        //    {
+        //        return;
+        //    }
 
-            int n = doc.DocumentNode.SelectNodes("//table[@id='archiveResult']/tr").Count;
+        //    int n = doc.DocumentNode.SelectNodes("//table[@id='archiveResult']/tr").Count;
 
-            for (int i = 2; i < n; i++)
-            {
-                var name = doc.DocumentNode.SelectSingleNode("//table[@id='archiveResult']/tr[" + i + "]/td[@class='name']").InnerText;
-                ListViewItem li = new ListViewItem(name);
-                var size = doc.DocumentNode.SelectSingleNode("//table[@id='archiveResult']/tr[" + i + "]/td[@class='size']").InnerText;
-                li.SubItems.Add(size);
-                var link = doc.DocumentNode.SelectSingleNode("//table[@id='archiveResult']/tr[" + i + "]/td[@class='action']/a[2]").Attributes["href"].Value;
-                li.SubItems.Add(link);
-                lv_p4_result.Items.Add(li);
-            }
-            lv_p4_result.Items.Add(new ListViewItem("====="));
-        }
+        //    for (int i = 2; i < n; i++)
+        //    {
+        //        var name = doc.DocumentNode.SelectSingleNode("//table[@id='archiveResult']/tr[" + i + "]/td[@class='name']").InnerText;
+        //        ListViewItem li = new ListViewItem(name);
+        //        var size = doc.DocumentNode.SelectSingleNode("//table[@id='archiveResult']/tr[" + i + "]/td[@class='size']").InnerText;
+        //        li.SubItems.Add(size);
+        //        var link = doc.DocumentNode.SelectSingleNode("//table[@id='archiveResult']/tr[" + i + "]/td[@class='action']/a[2]").Attributes["href"].Value;
+        //        li.SubItems.Add(link);
+        //        lv_p4_result.Items.Add(li);
+        //    }
+        //    lv_p4_result.Items.Add(new ListViewItem("====="));
+        //}
 
-        void workerP4_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
+        //void workerP4_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        //{
 
-        }
-        private void cmenu_p4_item_copy_Click(object sender, EventArgs e)
-        {
-            if (lv_p4_result.SelectedItems.Count == 1)
-            {
-                var link = lv_p4_result.SelectedItems[0].SubItems[2].Text;
+        //}
+        //private void cmenu_p4_item_copy_Click(object sender, EventArgs e)
+        //{
+        //    if (lv_p4_result.SelectedItems.Count == 1)
+        //    {
+        //        var link = lv_p4_result.SelectedItems[0].SubItems[2].Text;
 
-                Clipboard.SetText(link);
+        //        Clipboard.SetText(link);
 
-            }
-        }
-        private void btn_p4_Clear_Click(object sender, EventArgs e)
-        {
-            lv_p4_result.Items.Clear();
-        }
-        private void btn_p4_Go1_paste_Click(object sender, EventArgs e)
-        {
-            if (Clipboard.ContainsText())
-            {
-                txt_p4_keyword.Text = Clipboard.GetText();
-                btn_p4_Go1_Click(this, new EventArgs());
-            }
-        }
-        #endregion
+        //    }
+        //}
+        //private void btn_p4_Clear_Click(object sender, EventArgs e)
+        //{
+        //    lv_p4_result.Items.Clear();
+        //}
+        //private void btn_p4_Go1_paste_Click(object sender, EventArgs e)
+        //{
+        //    if (Clipboard.ContainsText())
+        //    {
+        //        txt_p4_keyword.Text = Clipboard.GetText();
+        //        btn_p4_Go1_Click(this, new EventArgs());
+        //    }
+        //}
+        //#endregion
         SearchController currentSearchController;
         private void button1_Click(object sender, EventArgs e)
         {

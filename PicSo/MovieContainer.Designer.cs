@@ -286,7 +286,7 @@
             this.Controls.Add(this.txt_Actor);
             this.Controls.Add(this.pictureBox1);
             this.Name = "MovieContainer";
-            this.Size = new System.Drawing.Size(907, 371);
+            this.Size = new System.Drawing.Size(915, 377);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

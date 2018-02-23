@@ -248,7 +248,7 @@ namespace Gets
 
                 //AV女優：
                 var item1 = docc.DocumentNode.SelectSingleNode("//table[@class='item']/tr[1]/td[2]").InnerText.Trim();
-                var actorsArr = item1.Split(new char[] { ' ', '\n' }, StringSplitOptions.RemoveEmptyEntries).ToList<string>();
+                var actorsArr = item1.Split(new char[] { '\r',' ', '\n' }, StringSplitOptions.RemoveEmptyEntries).ToList<string>();
 
                 //AVメーカー    制造厂
                 var item2 = docc.DocumentNode.SelectSingleNode("//table[@class='item']/tr[2]/td[2]").InnerText.Trim();

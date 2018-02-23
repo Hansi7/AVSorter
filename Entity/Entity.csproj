@@ -57,7 +57,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="ResultArzon.cs" />
-    <Compile Include="SearchItem.cs" />
     <Compile Include="Tools.cs" />
   </ItemGroup>
   <ItemGroup>

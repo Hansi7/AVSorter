@@ -11,6 +11,23 @@ namespace PicSo
 {
     public partial class MovieContainer : UserControl
     {
+        private bool _showOtherButton;
+
+        public bool IsShowOtherButton
+        {
+            get
+            {
+                this.Size = new Size(this.Width, this.Height + 30);
+                return _showOtherButton;
+            }
+            set
+            {
+                this.Size = new Size(this.Width, this.Height - 30);
+
+                _showOtherButton = value;
+            }
+        }
+
         public MovieContainer()
         {
             InitializeComponent();

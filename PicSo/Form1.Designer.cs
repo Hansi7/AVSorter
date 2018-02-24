@@ -37,45 +37,45 @@
             this.menu_remove = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.btn_brower = new System.Windows.Forms.Button();
-            this.txt_Dest = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txt_sub = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.listView1 = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.button1 = new System.Windows.Forms.Button();
             this.btn_Clear = new System.Windows.Forms.Button();
+            this.btn_brower = new System.Windows.Forms.Button();
             this.btn_AddNewEmptyItem = new System.Windows.Forms.Button();
             this.btn_removeItem = new System.Windows.Forms.Button();
             this.btn_paste_new = new System.Windows.Forms.Button();
-            this.cb_IsShowlog = new System.Windows.Forms.CheckBox();
             this.btn_MoveFile = new System.Windows.Forms.Button();
+            this.lbl_Path_preview = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txt_Dest = new System.Windows.Forms.TextBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txt_sub = new System.Windows.Forms.TextBox();
+            this.cb_IsShowlog = new System.Windows.Forms.CheckBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.movieContainer1 = new PicSo.MovieContainer();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.cb_AutoCorrect = new System.Windows.Forms.CheckBox();
             this.btn_LocalSearch = new System.Windows.Forms.Button();
             this.txt_LocalSearchKeyWord = new System.Windows.Forms.TextBox();
             this.cmenu_p4 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.cmenu_p4_item_copy = new System.Windows.Forms.ToolStripMenuItem();
-            this.lbl_Path_preview = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.sl_Network = new System.Windows.Forms.ToolStripStatusLabel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.movieContainer1 = new PicSo.MovieContainer();
             this.contextMenuStrip1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.cmenu_p4.SuspendLayout();
             this.statusStrip1.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -119,14 +119,14 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(253)))), ((int)(((byte)(250)))));
             this.tabPage1.Controls.Add(this.tableLayoutPanel1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(924, 761);
+            this.tabPage1.Size = new System.Drawing.Size(924, 579);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "批量文件处理";
-            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel1
             // 
@@ -161,63 +161,13 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(918, 755);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(918, 573);
             this.tableLayoutPanel1.TabIndex = 26;
-            // 
-            // btn_brower
-            // 
-            this.btn_brower.BackColor = System.Drawing.Color.Gold;
-            this.tableLayoutPanel1.SetColumnSpan(this.btn_brower, 2);
-            this.btn_brower.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_brower.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_brower.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_brower.Location = new System.Drawing.Point(3, 3);
-            this.btn_brower.Name = "btn_brower";
-            this.btn_brower.Size = new System.Drawing.Size(299, 34);
-            this.btn_brower.TabIndex = 3;
-            this.btn_brower.Text = "浏览文件夹...";
-            this.btn_brower.UseVisualStyleBackColor = false;
-            this.btn_brower.Click += new System.EventHandler(this.btn_brower_Click);
-            // 
-            // txt_Dest
-            // 
-            this.txt_Dest.Location = new System.Drawing.Point(62, 1);
-            this.txt_Dest.Name = "txt_Dest";
-            this.txt_Dest.Size = new System.Drawing.Size(497, 21);
-            this.txt_Dest.TabIndex = 9;
-            this.txt_Dest.Leave += new System.EventHandler(this.UIParamChange);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 6);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 12);
-            this.label2.TabIndex = 13;
-            this.label2.Text = "分类路径";
-            // 
-            // txt_sub
-            // 
-            this.txt_sub.Location = new System.Drawing.Point(62, 1);
-            this.txt_sub.Name = "txt_sub";
-            this.txt_sub.Size = new System.Drawing.Size(497, 21);
-            this.txt_sub.TabIndex = 8;
-            this.txt_sub.Text = "演员\\[番号]标题";
-            this.txt_sub.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
-            this.txt_sub.Leave += new System.EventHandler(this.UIParamChange);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 7);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 12);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "目标路径";
             // 
             // listView1
             // 
             this.listView1.AllowDrop = true;
+            this.listView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(253)))), ((int)(((byte)(250)))));
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
@@ -228,7 +178,7 @@
             this.listView1.FullRowSelect = true;
             this.listView1.Location = new System.Drawing.Point(3, 83);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(912, 539);
+            this.listView1.Size = new System.Drawing.Size(912, 357);
             this.listView1.TabIndex = 6;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -255,14 +205,14 @@
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.GreenYellow;
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(208)))), ((int)(((byte)(243)))));
             this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button1.Location = new System.Drawing.Point(764, 3);
+            this.button1.Location = new System.Drawing.Point(763, 3);
             this.button1.Name = "button1";
             this.tableLayoutPanel1.SetRowSpan(this.button1, 2);
-            this.button1.Size = new System.Drawing.Size(151, 74);
+            this.button1.Size = new System.Drawing.Size(152, 74);
             this.button1.TabIndex = 21;
             this.button1.Text = "Go";
             this.button1.UseVisualStyleBackColor = false;
@@ -270,11 +220,11 @@
             // 
             // btn_Clear
             // 
-            this.btn_Clear.BackColor = System.Drawing.Color.Red;
+            this.btn_Clear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(221)))), ((int)(((byte)(254)))));
             this.btn_Clear.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_Clear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Clear.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_Clear.Location = new System.Drawing.Point(612, 43);
+            this.btn_Clear.Location = new System.Drawing.Point(611, 43);
             this.btn_Clear.Name = "btn_Clear";
             this.btn_Clear.Size = new System.Drawing.Size(146, 34);
             this.btn_Clear.TabIndex = 10;
@@ -282,15 +232,30 @@
             this.btn_Clear.UseVisualStyleBackColor = false;
             this.btn_Clear.Click += new System.EventHandler(this.btn_Clear_Click);
             // 
+            // btn_brower
+            // 
+            this.btn_brower.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
+            this.tableLayoutPanel1.SetColumnSpan(this.btn_brower, 2);
+            this.btn_brower.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_brower.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_brower.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_brower.Location = new System.Drawing.Point(3, 3);
+            this.btn_brower.Name = "btn_brower";
+            this.btn_brower.Size = new System.Drawing.Size(298, 34);
+            this.btn_brower.TabIndex = 3;
+            this.btn_brower.Text = "浏览文件夹...";
+            this.btn_brower.UseVisualStyleBackColor = false;
+            this.btn_brower.Click += new System.EventHandler(this.btn_brower_Click);
+            // 
             // btn_AddNewEmptyItem
             // 
-            this.btn_AddNewEmptyItem.BackColor = System.Drawing.Color.Orange;
+            this.btn_AddNewEmptyItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
             this.btn_AddNewEmptyItem.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_AddNewEmptyItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_AddNewEmptyItem.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btn_AddNewEmptyItem.Location = new System.Drawing.Point(3, 43);
             this.btn_AddNewEmptyItem.Name = "btn_AddNewEmptyItem";
-            this.btn_AddNewEmptyItem.Size = new System.Drawing.Size(147, 34);
+            this.btn_AddNewEmptyItem.Size = new System.Drawing.Size(146, 34);
             this.btn_AddNewEmptyItem.TabIndex = 19;
             this.btn_AddNewEmptyItem.Text = "新建空项目";
             this.btn_AddNewEmptyItem.UseVisualStyleBackColor = false;
@@ -298,11 +263,11 @@
             // 
             // btn_removeItem
             // 
-            this.btn_removeItem.BackColor = System.Drawing.Color.Red;
+            this.btn_removeItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(221)))), ((int)(((byte)(254)))));
             this.btn_removeItem.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_removeItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_removeItem.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_removeItem.Location = new System.Drawing.Point(612, 3);
+            this.btn_removeItem.Location = new System.Drawing.Point(611, 3);
             this.btn_removeItem.Name = "btn_removeItem";
             this.btn_removeItem.Size = new System.Drawing.Size(146, 34);
             this.btn_removeItem.TabIndex = 4;
@@ -312,11 +277,11 @@
             // 
             // btn_paste_new
             // 
-            this.btn_paste_new.BackColor = System.Drawing.Color.Orange;
+            this.btn_paste_new.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
             this.btn_paste_new.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_paste_new.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_paste_new.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_paste_new.Location = new System.Drawing.Point(156, 43);
+            this.btn_paste_new.Location = new System.Drawing.Point(155, 43);
             this.btn_paste_new.Name = "btn_paste_new";
             this.btn_paste_new.Size = new System.Drawing.Size(146, 34);
             this.btn_paste_new.TabIndex = 20;
@@ -324,13 +289,95 @@
             this.btn_paste_new.UseVisualStyleBackColor = false;
             this.btn_paste_new.Click += new System.EventHandler(this.btn_paste_new_Click);
             // 
+            // btn_MoveFile
+            // 
+            this.btn_MoveFile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
+            this.btn_MoveFile.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_MoveFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_MoveFile.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_MoveFile.Location = new System.Drawing.Point(763, 446);
+            this.btn_MoveFile.Name = "btn_MoveFile";
+            this.tableLayoutPanel1.SetRowSpan(this.btn_MoveFile, 2);
+            this.btn_MoveFile.Size = new System.Drawing.Size(152, 54);
+            this.btn_MoveFile.TabIndex = 25;
+            this.btn_MoveFile.Text = "移动文件";
+            this.btn_MoveFile.UseVisualStyleBackColor = false;
+            this.btn_MoveFile.Click += new System.EventHandler(this.btn_MoveFile_Click);
+            // 
+            // lbl_Path_preview
+            // 
+            this.lbl_Path_preview.AutoSize = true;
+            this.tableLayoutPanel1.SetColumnSpan(this.lbl_Path_preview, 6);
+            this.lbl_Path_preview.Location = new System.Drawing.Point(3, 523);
+            this.lbl_Path_preview.Name = "lbl_Path_preview";
+            this.lbl_Path_preview.Size = new System.Drawing.Size(53, 12);
+            this.lbl_Path_preview.TabIndex = 13;
+            this.lbl_Path_preview.Text = "路径预览";
+            // 
+            // panel1
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.panel1, 4);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.txt_Dest);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 446);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(602, 24);
+            this.panel1.TabIndex = 26;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 7);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 12);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "目标路径";
+            // 
+            // txt_Dest
+            // 
+            this.txt_Dest.Location = new System.Drawing.Point(62, 1);
+            this.txt_Dest.Name = "txt_Dest";
+            this.txt_Dest.Size = new System.Drawing.Size(497, 21);
+            this.txt_Dest.TabIndex = 9;
+            this.txt_Dest.Leave += new System.EventHandler(this.UIParamChange);
+            // 
+            // panel2
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.panel2, 4);
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.txt_sub);
+            this.panel2.Location = new System.Drawing.Point(3, 476);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(602, 24);
+            this.panel2.TabIndex = 27;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(3, 6);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(53, 12);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "分类路径";
+            // 
+            // txt_sub
+            // 
+            this.txt_sub.Location = new System.Drawing.Point(62, 1);
+            this.txt_sub.Name = "txt_sub";
+            this.txt_sub.Size = new System.Drawing.Size(497, 21);
+            this.txt_sub.TabIndex = 8;
+            this.txt_sub.Text = "演员\\[番号]标题";
+            this.txt_sub.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.txt_sub.Leave += new System.EventHandler(this.UIParamChange);
+            // 
             // cb_IsShowlog
             // 
             this.cb_IsShowlog.AutoSize = true;
             this.cb_IsShowlog.Checked = true;
             this.cb_IsShowlog.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cb_IsShowlog.Dock = System.Windows.Forms.DockStyle.Right;
-            this.cb_IsShowlog.Location = new System.Drawing.Point(650, 628);
+            this.cb_IsShowlog.Location = new System.Drawing.Point(649, 446);
             this.cb_IsShowlog.Name = "cb_IsShowlog";
             this.tableLayoutPanel1.SetRowSpan(this.cb_IsShowlog, 2);
             this.cb_IsShowlog.Size = new System.Drawing.Size(108, 54);
@@ -338,21 +385,6 @@
             this.cb_IsShowlog.Text = "完成后显示日志";
             this.cb_IsShowlog.UseVisualStyleBackColor = true;
             this.cb_IsShowlog.CheckedChanged += new System.EventHandler(this.UIParamChange);
-            // 
-            // btn_MoveFile
-            // 
-            this.btn_MoveFile.BackColor = System.Drawing.Color.DarkOrange;
-            this.btn_MoveFile.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_MoveFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_MoveFile.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_MoveFile.Location = new System.Drawing.Point(764, 628);
-            this.btn_MoveFile.Name = "btn_MoveFile";
-            this.tableLayoutPanel1.SetRowSpan(this.btn_MoveFile, 2);
-            this.btn_MoveFile.Size = new System.Drawing.Size(151, 54);
-            this.btn_MoveFile.TabIndex = 25;
-            this.btn_MoveFile.Text = "移动文件";
-            this.btn_MoveFile.UseVisualStyleBackColor = false;
-            this.btn_MoveFile.Click += new System.EventHandler(this.btn_MoveFile_Click);
             // 
             // tabControl1
             // 
@@ -379,6 +411,17 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "本地查询";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // movieContainer1
+            // 
+            this.movieContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.movieContainer1.IsShowOtherButton = false;
+            this.movieContainer1.Location = new System.Drawing.Point(6, 175);
+            this.movieContainer1.Movie = null;
+            this.movieContainer1.MovieList = null;
+            this.movieContainer1.Name = "movieContainer1";
+            this.movieContainer1.Size = new System.Drawing.Size(915, 440);
+            this.movieContainer1.TabIndex = 5;
             // 
             // listBox1
             // 
@@ -433,16 +476,6 @@
             this.cmenu_p4_item_copy.Size = new System.Drawing.Size(124, 22);
             this.cmenu_p4_item_copy.Text = "复制地址";
             // 
-            // lbl_Path_preview
-            // 
-            this.lbl_Path_preview.AutoSize = true;
-            this.tableLayoutPanel1.SetColumnSpan(this.lbl_Path_preview, 6);
-            this.lbl_Path_preview.Location = new System.Drawing.Point(3, 705);
-            this.lbl_Path_preview.Name = "lbl_Path_preview";
-            this.lbl_Path_preview.Size = new System.Drawing.Size(53, 12);
-            this.lbl_Path_preview.TabIndex = 13;
-            this.lbl_Path_preview.Text = "路径预览";
-            // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -460,38 +493,6 @@
             this.sl_Network.Size = new System.Drawing.Size(68, 17);
             this.sl_Network.Text = "网络不可用";
             // 
-            // panel1
-            // 
-            this.tableLayoutPanel1.SetColumnSpan(this.panel1, 4);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.txt_Dest);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 628);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(603, 24);
-            this.panel1.TabIndex = 26;
-            // 
-            // panel2
-            // 
-            this.tableLayoutPanel1.SetColumnSpan(this.panel2, 4);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.txt_sub);
-            this.panel2.Location = new System.Drawing.Point(3, 658);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(603, 24);
-            this.panel2.TabIndex = 27;
-            // 
-            // movieContainer1
-            // 
-            this.movieContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.movieContainer1.IsShowOtherButton = false;
-            this.movieContainer1.Location = new System.Drawing.Point(6, 175);
-            this.movieContainer1.Movie = null;
-            this.movieContainer1.MovieList = null;
-            this.movieContainer1.Name = "movieContainer1";
-            this.movieContainer1.Size = new System.Drawing.Size(915, 410);
-            this.movieContainer1.TabIndex = 5;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -507,16 +508,16 @@
             this.tabPage1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.cmenu_p4.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

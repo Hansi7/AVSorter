@@ -588,6 +588,28 @@ namespace PicSo
             txt_sub.AppendText((sender as Label).Text);
             txt_sub_Leave(null, null);
         }
+
+        private void btn_saveDB_Click(object sender, EventArgs e)
+        {
+            DBSugar.MovieDBController con = new DBSugar.MovieDBController();
+            MessageBox.Show(con.ClearDB());
+
+            insertInto();
+        }
+        void insertInto()
+        {
+            DBSugar.MovieDBController con = new DBSugar.MovieDBController();
+            foreach (ListViewItem item in listView1.Items)
+            {
+                var ra = (item.Tag as ResultArzon);
+                if (ra != null)
+                {
+                    con.MovieDb.Insert(ra.Movie);
+                }
+            }
+
+            MessageBox.Show("ok");
+        }
     }
 
 

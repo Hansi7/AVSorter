@@ -76,7 +76,7 @@ namespace AVSORTER
         public string ItemURL { get; set; }
         
         public bool Censored { get; set; }
-        public string VidesFile { get; set; }
+        public string VideosFile { get; set; }
 
 //        public override string ToString()
 //        {

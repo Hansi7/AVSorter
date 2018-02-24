@@ -51,7 +51,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>1414496318_339862.ico</ApplicationIcon>
+    <ApplicationIcon>toilet_paper.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>B4C5C541B9675ED900A1973DDD3442E0ACAD532A</ManifestCertificateThumbprint>
@@ -68,6 +68,7 @@
   <PropertyGroup>
     <TargetZone>LocalIntranet</TargetZone>
   </PropertyGroup>
+  <PropertyGroup />
   <PropertyGroup />
   <ItemGroup>
     <Reference Include="HtmlAgilityPack">
@@ -169,7 +170,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="1414496318_339862.ico" />
+    <Content Include="driver.ico" />
+    <Content Include="drive_open.ico" />
+    <Content Include="internal_drive_open.ico" />
+    <Content Include="toilet_paper.ico" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">

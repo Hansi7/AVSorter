@@ -18,19 +18,19 @@ namespace AVSORTER
             }
             else
             {
-                //nothing to do here
+                //nothing
             }
             return f;
         }
         private static FileProcessor f;
-        //public FileProcessor(string startPath)
-        //{
-        //    this.list = Directory.GetFileSystemEntries(startPath, "*.*", SearchOption.AllDirectories).ToList<string>();
-        //    less(this.list);
-        //}
 
 
         public FileProcessor()
+        {
+            this.DestPath = db.GetDestPath();
+            this.SubPath = db.GetSubPath();
+        }
+        public void LoadPath()
         {
             this.DestPath = db.GetDestPath();
             this.SubPath = db.GetSubPath();
@@ -51,7 +51,7 @@ namespace AVSORTER
             }
         }
         List<string> list = new List<string>();
-                /// <summary>
+        /// <summary>
         /// 目标文件夹
         /// </summary>
         public string DestPath { get; set; }
@@ -88,13 +88,12 @@ namespace AVSORTER
         {
             if (SubPath!=null)
             {
-                var a = SubPath.Replace("演员", movie.Actor.Count==0?"无名氏":Tools.ListToString(movie.Actor));
+                var a = SubPath.Replace("演员", movie.Actor.Count == 0 ? "无名氏" : Tools.ListToString(movie.Actor));
                 a = a.Replace("番号", movie.AVCode);
-                a = a.Replace("厂商", movie.Maker);
-                a = a.Replace("制造商", movie.Producer);
-
-                a = a.Replace("标题", movie.Title);
-                a = a.Replace("标签", movie.Lable);
+                a = a.Replace("厂商", movie.Maker == "" ? "未知厂商" : movie.Maker);
+                a = a.Replace("制造商", movie.Producer == "" ? "未知制造商" : movie.Producer);
+                a = a.Replace("标题", movie.Title == "" ? "未知标题" : movie.Title);
+                a = a.Replace("标签", movie.Lable == "" ? "无标签" : movie.Lable);
                 return Path.Combine(DestPath, a, movie.AVCode + Path.GetExtension(sourceFile));
             }
             else
@@ -104,11 +103,13 @@ namespace AVSORTER
 
         }
 
+        public string GetDestNamePreview(Movie m,string sourceFile) {
+            return this._getFilePathName(m, sourceFile);
+        }
         public void MakeMove(Movie m, string sourceFile)
         {
             string dest = _getFilePathName(m, sourceFile);
 
-            
             try
             {
                 MoveFile(sourceFile, dest);
@@ -161,9 +162,6 @@ namespace AVSORTER
             //Microsoft.VisualBasic.FileIO.FileSystem.MoveFile(sourceFile, dest, Microsoft.VisualBasic.FileIO.UIOption.AllDialogs, Microsoft.VisualBasic.FileIO.UICancelOption.DoNothing);
             //Microsoft.VisualBasic.FileIO.FileSystem.CopyFile(m.CoverFile, Path.Combine(Path.GetDirectoryName(dest),Path.GetFileName(m.CoverFile)), Microsoft.VisualBasic.FileIO.UIOption.AllDialogs, Microsoft.VisualBasic.FileIO.UICancelOption.DoNothing);
         }
-
-
-
         /// <summary>
         /// 添加文件列表
         /// </summary>

@@ -16,32 +16,14 @@ namespace PicSo
 {
     public partial class Form1 : Form
     {
+
+        AVSORTER.DB.AVDB db = new AVSORTER.DB.AVDB();
         public Form1()
         {
-            checkou();
             InitializeComponent();
             ListView.CheckForIllegalCrossThreadCalls = false;
         }
 
-        void checkou()
-        {
-            if (AppDomain.CurrentDomain.IsDefaultAppDomain())
-            {
-                string appName = AppDomain.CurrentDomain.FriendlyName;
-                var currentAssembly = Assembly.GetExecutingAssembly();
-                AppDomainSetup setup = new AppDomainSetup();
-                setup.ApplicationBase = System.Environment.CurrentDirectory;
-                setup.PrivateBinPath = "bin";
-                setup.ConfigurationFile = setup.ApplicationBase +
-                                    string.Format("\\config\\{0}.config", appName);
-                AppDomain newDomain = AppDomain.CreateDomain("NewAppDomain", null, setup);
-                int ret = newDomain.ExecuteAssemblyByName(currentAssembly.FullName);
-                AppDomain.Unload(newDomain);
-                Environment.ExitCode = ret;
-                Environment.Exit(0);
-                return;
-            }
-        }
         private void Form1_Load(object sender, EventArgs e)
         {
             arzon = new Gets.Arzon(false);
@@ -82,11 +64,6 @@ namespace PicSo
             }
         }
 
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void btn_Clear_Click(object sender, EventArgs e)
         {
@@ -131,54 +108,33 @@ namespace PicSo
                 f.DestPath = txt_Dest.Text;
                 f.SubPath = txt_sub.Text;
                 f.ShowLog = cb_IsShowlog.Checked;
-                new AVSORTER.DB.AVDB().SetDestPath(f.DestPath);
-                new AVSORTER.DB.AVDB().SetSubPath(f.SubPath);
+                db.SetDestPath(f.DestPath);
+                db.SetSubPath(f.DestPath);
             }
-        }
-
-        Semaphore sem1_bmovie = new Semaphore(2, 2);
-        Semaphore sem2_movie = new Semaphore(2, 2);
-
-
-        private void Fi_OnAboutToLoadImage(object sender, EventArgs e)
-        {
-            sem2_movie.WaitOne();
-        }
-
-        private void Fi_OnCompletedLoadImage(object sender, EventArgs e)
-        {
-            sem2_movie.Release();
-        }
-        private void Fi_OnCompletedLoadInfo(object sender, EventArgs e)
-        {
-            sem1_bmovie.Release();
-        }
-
-        private void Fi_OnAboutToLoadInfo(object sender, EventArgs e)
-        {
-            sem1_bmovie.WaitOne();
-        }
-
-
-        private void UIParamChange(object sender, EventArgs e)
-        {
-
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            return;
-
-            if (listView1.SelectedItems.Count == 1)
+            try
             {
-                if (listView1.SelectedItems[0].Tag != null)
+                if (listView1.SelectedItems.Count == 1)
                 {
-                    var si = (listView1.SelectedItems[0].Tag as ResultArzon);
+                    if (listView1.SelectedItems[0].Tag != null)
+                    {
+                        var si = (listView1.SelectedItems[0].Tag as ResultArzon);
+                        var fp = FileProcessor.GetInstance();
+                        lbl_Path_preview.Text =
+                            fp.GetDestNamePreview(si.Movie, listView1.SelectedItems[0].SubItems[0].Text);
 
+                    }
 
                 }
-
             }
+            catch (Exception)
+            {
+                lbl_Path_preview.Text = "影片信息还没有准备好";
+            }
+
         }
 
 
@@ -350,9 +306,9 @@ namespace PicSo
 
         private void rebuildDatabase()
         {
+            initFileProcessor();
             MessageBox.Show("未实现");
             return;
-            initFileProcessor();
             foreach (ListViewItem item in listView1.Items)
             {
 
@@ -381,7 +337,6 @@ namespace PicSo
                 fc = AVSORTER.Tools.Fcode(txt_LocalSearchKeyWord.Text);
                 txt_LocalSearchKeyWord.Text = fc;
             }
-            var db = new AVSORTER.DB.AVDB();
             var l = db.QueryAV(fc);
             this.movieContainer1.MovieList = l;
 
@@ -614,6 +569,24 @@ namespace PicSo
                     item.Tag = e.Ra;
                 }
             }
+        }
+
+        private void txt_Dest_Leave(object sender, EventArgs e)
+        {
+            var f = FileProcessor.GetInstance();
+            f.DestPath = txt_Dest.Text.Trim();
+        }
+
+        private void txt_sub_Leave(object sender, EventArgs e)
+        {
+            var f = FileProcessor.GetInstance();
+            f.SubPath = txt_sub.Text.Trim();
+        }
+
+        private void label3_DoubleClick(object sender, EventArgs e)
+        {
+            txt_sub.AppendText((sender as Label).Text);
+            txt_sub_Leave(null, null);
         }
     }
 

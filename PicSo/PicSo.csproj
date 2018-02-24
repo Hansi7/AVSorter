@@ -170,9 +170,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="driver.ico" />
     <Content Include="drive_open.ico" />
-    <Content Include="internal_drive_open.ico" />
     <Content Include="toilet_paper.ico" />
   </ItemGroup>
   <ItemGroup>

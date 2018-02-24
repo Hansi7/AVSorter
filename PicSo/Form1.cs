@@ -10,6 +10,7 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using AVSORTER;
+using System.Reflection;
 
 namespace PicSo
 {
@@ -17,10 +18,30 @@ namespace PicSo
     {
         public Form1()
         {
+            checkou();
             InitializeComponent();
             ListView.CheckForIllegalCrossThreadCalls = false;
         }
 
+        void checkou()
+        {
+            if (AppDomain.CurrentDomain.IsDefaultAppDomain())
+            {
+                string appName = AppDomain.CurrentDomain.FriendlyName;
+                var currentAssembly = Assembly.GetExecutingAssembly();
+                AppDomainSetup setup = new AppDomainSetup();
+                setup.ApplicationBase = System.Environment.CurrentDirectory;
+                setup.PrivateBinPath = "bin";
+                setup.ConfigurationFile = setup.ApplicationBase +
+                                    string.Format("\\config\\{0}.config", appName);
+                AppDomain newDomain = AppDomain.CreateDomain("NewAppDomain", null, setup);
+                int ret = newDomain.ExecuteAssemblyByName(currentAssembly.FullName);
+                AppDomain.Unload(newDomain);
+                Environment.ExitCode = ret;
+                Environment.Exit(0);
+                return;
+            }
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
             arzon = new Gets.Arzon(false);

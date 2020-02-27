@@ -10,7 +10,7 @@ namespace AVSORTER.DB
 {
     public class Helper
     {
-        string b = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "db","AVDB.accdb");
+        string b = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "db","AVDB.mdb");
         string ConnectString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=";
         OleDbConnection connection;
         /// <summary>
@@ -20,7 +20,11 @@ namespace AVSORTER.DB
         public Helper(string connectionString)
         {
             ConnectString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + b;
-            
+            ConnectString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + b;
+
+
+
+
             if (connectionString== string.Empty)
             {
                 connection = new OleDbConnection(ConnectString);

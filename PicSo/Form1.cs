@@ -17,7 +17,7 @@ namespace PicSo
     public partial class Form1 : Form
     {
 
-        AVSORTER.DB.AVDB db = new AVSORTER.DB.AVDB();
+        //AVSORTER.DB.AVDB db = new AVSORTER.DB.AVDB();
         public Form1()
         {
             InitializeComponent();
@@ -108,8 +108,8 @@ namespace PicSo
                 f.DestPath = txt_Dest.Text;
                 f.SubPath = txt_sub.Text;
                 f.ShowLog = cb_IsShowlog.Checked;
-                db.SetDestPath(f.DestPath);
-                db.SetSubPath(f.DestPath);
+                //db.SetDestPath(f.DestPath);
+                //db.SetSubPath(f.DestPath);
             }
         }
 
@@ -331,23 +331,23 @@ namespace PicSo
 
         private void btn_LocalSearch_Click(object sender, EventArgs e)
         {
-            string fc = txt_LocalSearchKeyWord.Text;
-            if (cb_AutoCorrect.Checked)
-            {
-                fc = AVSORTER.Tools.Fcode(txt_LocalSearchKeyWord.Text);
-                txt_LocalSearchKeyWord.Text = fc;
-            }
-            var l = db.QueryAV(fc);
-            this.movieContainer1.MovieList = l;
+            //string fc = txt_LocalSearchKeyWord.Text;
+            //if (cb_AutoCorrect.Checked)
+            //{
+            //    fc = AVSORTER.Tools.Fcode(txt_LocalSearchKeyWord.Text);
+            //    txt_LocalSearchKeyWord.Text = fc;
+            //}
+            ////var l = db.QueryAV(fc);
+            //this.movieContainer1.MovieList = l;
 
 
-            this.listBox1.DataSource = l;
+            //this.listBox1.DataSource = l;
             //this.listBox1.DisplayMember = string.Format("{0}:{1}", "AVCode", "Title");
 
-            if (l.Count > 0)
-            {
-                this.movieContainer1.Movie = l[0];
-            }
+            //if (l.Count > 0)
+            //{
+            //    this.movieContainer1.Movie = l[0];
+            //}
         }
         private void txt_LocalSearchKeyWord_KeyPress(object sender, KeyPressEventArgs e)
         {

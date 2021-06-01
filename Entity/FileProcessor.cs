@@ -27,20 +27,20 @@ namespace AVSORTER
 
         public FileProcessor()
         {
-            this.DestPath = db.GetDestPath();
-            this.SubPath = db.GetSubPath();
+            //this.DestPath = db.GetDestPath();
+            //this.SubPath = db.GetSubPath();
         }
         public void LoadPath()
         {
-            this.DestPath = db.GetDestPath();
-            this.SubPath = db.GetSubPath();
+            //this.DestPath = db.GetDestPath();
+            //this.SubPath = db.GetSubPath();
         }
 
         #endregion
 
         #region 属性字段
 
-        DB.AVDB db = new DB.AVDB();
+        //DB.AVDB db = new DB.AVDB();
 
         StringBuilder _sblog = new StringBuilder();
         public List<string> Files
@@ -119,7 +119,7 @@ namespace AVSORTER
                     CopyFile(m.CoverFile, Path.Combine(Path.GetDirectoryName(dest), Path.GetFileName(m.CoverFile)));
                 }
                 var xiangduiPath = dest.Substring(this.DestPath.Length + 1);
-                db.AddNewAV(m, xiangduiPath, true);
+                //db.AddNewAV(m, xiangduiPath, true);
             }
             catch (System.Data.OleDb.OleDbException err)
             {
@@ -148,7 +148,7 @@ namespace AVSORTER
                 //}
                 m.CoverFile = m.AVCode + ".jpg";
                 var xiangduiPath = dest.Substring(this.DestPath.Length + 1);
-                db.AddNewAV(m, xiangduiPath, true);
+                //db.AddNewAV(m, xiangduiPath, true);
             }
             catch (System.Data.OleDb.OleDbException err)
             {

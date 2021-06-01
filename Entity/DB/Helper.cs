@@ -10,7 +10,7 @@ namespace AVSORTER.DB
 {
     public class Helper
     {
-        string b = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "db","AVDB.mdb");
+        string b = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "db", "AVDB.mdb");
         string ConnectString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=";
         OleDbConnection connection;
         /// <summary>
@@ -41,7 +41,7 @@ namespace AVSORTER.DB
             }
             catch (Exception err)
             {
-                throw err;
+                System.Windows.Forms.MessageBox.Show(err.Message);
             }
         }
 
